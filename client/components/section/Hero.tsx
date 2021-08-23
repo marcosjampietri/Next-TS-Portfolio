@@ -13,11 +13,10 @@ const Hero = () => {
                     <h4>I AM</h4>
                     <Name>MARCOS JAMPIETRI</Name>
                     <h5>
-                        Visual media content creator based in london, making
-                        photography, video and visual content in the advanture,
-                        fashion industry and everything in between. video and
-                        visual content in the advanture, fashion industry and
-                        everything in between
+                        I'm a Full Stack Javascript Developer professional based
+                        in London, UK; skilled in building and designing
+                        exceptional websites, servers, and complete Multi-Cloud
+                        DevOps infrastructures.
                     </h5>
                 </Writes>
                 <Me>
@@ -80,9 +79,10 @@ const Me = styled(animated.div)`
 
         mix-blend-mode: luminosity;
 
-        ${below.med`
-            top: 12vw;
-            width: 80vw;
+        ${below.small`
+            // top: 12vw;
+            left: -25vw;
+            
         `}
     }
 `;
@@ -98,12 +98,15 @@ const Writes = styled(animated.div)`
     align-items: start;
     flex-direction: column;
 
+    h4,
+    h5 {
+        z-index: 2;
+    }
     h5 {
         position: relative;
         left: 60px;
         max-width: 300px;
         text-align: justify;
-        z-index: 2;
 
         color: white;
         font-size: clamp(1em, 1vw, 2em);
