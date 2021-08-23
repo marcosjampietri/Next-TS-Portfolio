@@ -13,8 +13,8 @@ const Hero = () => {
                     <h4>I AM</h4>
                     <Name>MARCOS JAMPIETRI</Name>
                     <h5>
-                        I'm a Full Stack Javascript Developer professional based
-                        in London, UK; skilled in building and designing
+                        I\'m a Full Stack Javascript Developer professional
+                        based in London, UK; skilled in building and designing
                         exceptional websites, servers, and complete Multi-Cloud
                         DevOps infrastructures.
                     </h5>
