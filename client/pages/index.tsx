@@ -9,9 +9,14 @@ const Home: NextPage = () => {
     return (
         <Layout>
             <Page>
-                <Link href="/works">
-                    <a style={{ color: "black" }}>WORKS</a>
-                </Link>
+                <Bar>
+                    <Link href="/works">
+                        <a>WORKS</a>
+                    </Link>
+                    <Link href="/contact">
+                        <a>CONTACT</a>
+                    </Link>
+                </Bar>
                 <Hero />
             </Page>
         </Layout>
@@ -23,4 +28,13 @@ export default Home;
 const Page = styled.div`
     width: 100vw;
     height: 100vh;
+`;
+const Bar = styled.div`
+    width: 100vw;
+    display: flex;
+
+    a {
+        margin: 0px 20px;
+        color: black;
+    }
 `;
