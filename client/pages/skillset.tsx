@@ -3,30 +3,27 @@ import Link from "next/link";
 import styled from "styled-components";
 
 import Layout from "../components/Layout";
-import Hero from "../components/section/Hero";
+import Skillset from "../components/section/Skills";
 
-const Home: NextPage = () => {
+const Skills: NextPage = () => {
     return (
         <Layout>
             <Page>
                 <Bar>
-                    <Link href="/works">
-                        <a>WORKS</a>
+                    <Link href="/">
+                        <a>HOME</a>
                     </Link>
                     <Link href="/contact">
                         <a>CONTACT</a>
                     </Link>
-                    <Link href="/skillset">
-                        <a>SKILLS</a>
-                    </Link>
                 </Bar>
-                <Hero />
+                <Skillset />
             </Page>
         </Layout>
     );
 };
 
-export default Home;
+export default Skills;
 
 const Page = styled.div`
     width: 100vw;

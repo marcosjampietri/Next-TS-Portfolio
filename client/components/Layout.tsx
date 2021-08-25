@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
 import { useSelector, useDispatch } from "react-redux";
-import styled from "styled-components";
 
 {
     /* import { loadAction } from "../store/actions/loadActions"; */
