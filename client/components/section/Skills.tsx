@@ -114,7 +114,7 @@ const Skill = styled.div`
     margin: 20px 0px;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
 
     // border: 1px solid blue;
