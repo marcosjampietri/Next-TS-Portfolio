@@ -6,6 +6,53 @@ import { below } from "../../styles/breakpoints";
 import styled from "styled-components";
 
 const Skillset = () => {
+    const skillFront = [
+        {
+            def: "Setup of all the technologies with Vanilla React, Next.js and Typescript",
+            icon: "",
+            another: "",
+        },
+        {
+            def: "Fluid Responsiveness without Bootstrap/Tailwind/Material UI",
+            icon: "",
+            another: "",
+        },
+        {
+            def: "Use of Styled-Components ",
+            icon: "",
+            another: "",
+        },
+        {
+            def: "Smooth and organic animations using React-Spring",
+            icon: "",
+            another: "",
+        },
+        {
+            def: "Complex state management with Redux",
+            icon: "",
+            another: "",
+        },
+        {
+            def: "Use of persistent data with Local Storage",
+            icon: "",
+            another: "",
+        },
+        {
+            def: "Flipping cards, Scroll Effects, Parallax, Carousel, Neo-Morphism, 3D Elements, Modal Elements, Page Transitions, KeyFrames ",
+            icon: "",
+            another: "",
+        },
+    ];
+
+    const typeList = [
+        { typ: "FRONT END", pos: 1 },
+        {
+            /* { typ: "BACK_END", pos: 2 },
+        { typ: "DEVOPS", pos: 3 },
+        { typ: "GENERAL", pos: 4 }, */
+        },
+    ];
+
     return (
         <Section>
             <Margin>
@@ -13,28 +60,16 @@ const Skillset = () => {
                     <Name>
                         <h2>SKILLS</h2>
                     </Name>
-                    <Type>FRONT END</Type>
-                    <Skill>
-                        <Icon></Icon>
-                        <h4>
-                            Setup of all the technologies with Vanilla React,
-                            Next.js and Typescript.
-                        </h4>
-                    </Skill>
-                    <Skill>
-                        <Icon></Icon>
-                        <h4>
-                            Flipping cards, Scroll Effects, Parallax, Carousel,
-                            Neo-Morphism, 3D Elements, Modal Elements, Page
-                            Transitions, KeyFrames.{" "}
-                        </h4>
-                    </Skill>
-                    <h4>SOMETHING</h4>
-                    <h4>SOMETHING</h4>
-                    <h4>SOMETHING</h4>
-                    <h4>SOMETHING</h4>
-                    <h4>SOMETHING</h4>
-                    <h4>SOMETHING</h4>
+
+                    {typeList.map((item, index) => (
+                        <Type key={index}>{item.typ}</Type>
+                    ))}
+                    {skillFront.map((skill, index) => (
+                        <Skill key={index}>
+                            <Icon></Icon>
+                            <h4>{skill.def}</h4>
+                        </Skill>
+                    ))}
                 </Writes>
             </Margin>
         </Section>
@@ -92,13 +127,14 @@ const Writes = styled(animated.div)`
 
 const Name = styled.div`
     position: absolute;
-    top: -30px;
+    top: 0px;
     padding: 0px 30px;
 
+    transform: translateY(-50%);
     background: hsla(263, 0%, 95%, 1);
 
     h2 {
-        font-size: clamp(3em, 4vw, 6em);
+        font-size: clamp(2em, 4vw, 6em);
         background: -webkit-linear-gradient(
             120deg,
             hsl(340, 100%, 50%),
@@ -120,23 +156,32 @@ const Skill = styled.div`
     // border: 1px solid blue;
 `;
 const Icon = styled.div`
-    width: 30px;
-    height: 30px;
+    flex: 0 0 35px;
+    width: 35px;
+    height: 35px;
     margin-right: 10px;
-
-    flex: 0 0 30px;
+    clip-path: polygon(
+        30% 0,
+        100% 0,
+        100% 0,
+        100% 70%,
+        70% 100%,
+        0 100%,
+        0 100%,
+        0 30%
+    );
 
     background: darkgreen;
 `;
 const Type = styled.div`
     position: absolute;
     top: 70px;
-    left: -64px;
+    left: 0px;
     width: fit-content;
     padding: 10px;
 
     color: black;
-    transform: rotate(270deg);
+    transform: rotate(270deg) translateY(-170%);
     background: hsla(263, 0%, 95%, 1);
     border: 1px solid hsla(340, 80%, 50%, 1);
 `;
