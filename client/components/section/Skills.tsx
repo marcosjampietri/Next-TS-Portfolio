@@ -15,14 +15,14 @@ const Skillset = () => {
                     </Name>
                     <Type>FRONT END</Type>
                     <Skill>
-                        <Icon>A</Icon>
+                        <Icon></Icon>
                         <h4>
                             Setup of all the technologies with Vanilla React,
                             Next.js and Typescript.
                         </h4>
                     </Skill>
                     <Skill>
-                        <Icon>A</Icon>
+                        <Icon></Icon>
                         <h4>
                             Flipping cards, Scroll Effects, Parallax, Carousel,
                             Neo-Morphism, 3D Elements, Modal Elements, Page
@@ -74,12 +74,12 @@ const Margin = styled.div`
     width: 100%;
     margin: 0px auto;
 
-    border: 1px solid black;
+    // border: 1px solid black;
 `;
 
 const Writes = styled(animated.div)`
     position: relative;
-    padding: 50px 30px;
+    padding: 20px 30px;
     margin: 0px 20px;
 
     h4 {
@@ -87,7 +87,7 @@ const Writes = styled(animated.div)`
         // margin-bottom: 1em;
     }
 
-    border: 1px solid red;
+    border: 1px solid hsla(340, 80%, 50%, 1);
 `;
 
 const Name = styled.div`
@@ -111,24 +111,32 @@ const Name = styled.div`
     }
 `;
 const Skill = styled.div`
-    padding: 10px 0px;
+    margin: 20px 0px;
 
     display: flex;
+    justify-content: space-between;
     align-items: center;
+
     // border: 1px solid blue;
 `;
 const Icon = styled.div`
     width: 30px;
     height: 30px;
-    margin: 0px 10px;
+    margin-right: 10px;
+
+    flex: 0 0 30px;
 
     background: darkgreen;
 `;
 const Type = styled.div`
     position: absolute;
-    top: 50px;
-    left: -50px;
+    top: 70px;
+    left: -64px;
     width: fit-content;
+    padding: 10px;
+
+    color: black;
     transform: rotate(270deg);
-    background: blueviolet;
+    background: hsla(263, 0%, 95%, 1);
+    border: 1px solid hsla(340, 80%, 50%, 1);
 `;
