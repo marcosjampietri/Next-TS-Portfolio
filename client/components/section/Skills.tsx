@@ -1,5 +1,5 @@
 import React from "react";
-import { animated } from "react-spring";
+import { useTrail, animated, config } from "react-spring";
 import Link from "next/link";
 
 import { below } from "../../styles/breakpoints";
@@ -9,49 +9,56 @@ const Skillset = () => {
     const skillFront = [
         {
             def: "Setup of all the technologies with Vanilla React, Next.js and Typescript",
-            icon: "",
-            another: "",
+            icon: "nxt",
+            color: "",
         },
         {
             def: "Fluid Responsiveness without Bootstrap/Tailwind/Material UI",
-            icon: "",
-            another: "",
+            icon: "brn",
+            color: "",
         },
         {
             def: "Use of Styled-Components ",
-            icon: "",
-            another: "",
+            icon: "stc",
+            color: "",
         },
         {
             def: "Smooth and organic animations using React-Spring",
-            icon: "",
-            another: "",
+            icon: "skt",
+            color: "",
         },
         {
             def: "Complex state management with Redux",
-            icon: "",
-            another: "",
+            icon: "rdx",
+            color: "",
         },
         {
             def: "Use of persistent data with Local Storage",
-            icon: "",
-            another: "",
+            icon: "dkr",
+            color: "",
         },
         {
             def: "Flipping cards, Scroll Effects, Parallax, Carousel, Neo-Morphism, 3D Elements, Modal Elements, Page Transitions, KeyFrames ",
-            icon: "",
-            another: "",
+            icon: "css",
+            color: "",
         },
     ];
 
     const typeList = [
-        { typ: "FRONT END", pos: 1 },
-        {
-            /* { typ: "BACK_END", pos: 2 },
+        { typ: "GENERAL", pos: 4 },
         { typ: "DEVOPS", pos: 3 },
-        { typ: "GENERAL", pos: 4 }, */
-        },
+        { typ: "BACK", pos: 2 },
+        { typ: "FRONT", pos: 1 },
     ];
+
+    const [trail, api] = useTrail(skillFront.length, (i) => ({
+        from: { opacity: 0, x: 30 },
+        to: { opacity: 1, x: 0 },
+        config: {
+            tension: 500,
+            friction: 80,
+        },
+    }));
 
     return (
         <Section>
@@ -60,14 +67,28 @@ const Skillset = () => {
                     <Name>
                         <h2>SKILLS</h2>
                     </Name>
-
-                    {typeList.map((item, index) => (
-                        <Type key={index}>{item.typ}</Type>
-                    ))}
-                    {skillFront.map((skill, index) => (
-                        <Skill key={index}>
-                            <Icon></Icon>
-                            <h4>{skill.def}</h4>
+                    <Type>
+                        {typeList.map((item, index) => (
+                            <div key={index}>{item.typ}</div>
+                        ))}
+                    </Type>
+                    {trail.map(({ x, ...otherProps }, i) => (
+                        <Skill
+                            key={i}
+                            style={{
+                                ...otherProps,
+                                background: `${skillFront[i].color}`,
+                                transform: x.to(
+                                    (x) => `translate3d(${x}vw, 0, 0)`
+                                ),
+                            }}
+                        >
+                            <Icon
+                                src={`/Icons/${skillFront[i].icon}.svg`}
+                                alt="icon"
+                                width="60px"
+                            ></Icon>
+                            <h4>{skillFront[i].def}</h4>
                         </Skill>
                     ))}
                 </Writes>
@@ -114,8 +135,10 @@ const Margin = styled.div`
 
 const Writes = styled(animated.div)`
     position: relative;
-    padding: 20px 30px;
+    min-height: 480px;
+    padding: 20px 20px 20px 50px;
     margin: 0px 20px;
+    z-index: 2;
 
     h4 {
         color: black;
@@ -123,6 +146,7 @@ const Writes = styled(animated.div)`
     }
 
     border: 1px solid hsla(340, 80%, 50%, 1);
+    background-color: hsla(263, 0%, 95%, 1);
 `;
 
 const Name = styled.div`
@@ -146,8 +170,10 @@ const Name = styled.div`
         z-index: 2;
     }
 `;
-const Skill = styled.div`
+
+const Skill = styled(animated.div)`
     margin: 20px 0px;
+    transform: translate3d(0, 0vh, 0);
 
     display: flex;
     justify-content: start;
@@ -155,33 +181,39 @@ const Skill = styled.div`
 
     // border: 1px solid blue;
 `;
-const Icon = styled.div`
+const Icon = styled.img`
     flex: 0 0 35px;
     width: 35px;
     height: 35px;
-    margin-right: 10px;
-    clip-path: polygon(
-        30% 0,
-        100% 0,
-        100% 0,
-        100% 70%,
-        70% 100%,
-        0 100%,
-        0 100%,
-        0 30%
-    );
-
-    background: darkgreen;
+    margin-right: 20px;
 `;
 const Type = styled.div`
     position: absolute;
-    top: 70px;
+    top: 0px;
     left: 0px;
-    width: fit-content;
-    padding: 10px;
+    margin: 10px 0px;
 
-    color: black;
-    transform: rotate(270deg) translateY(-170%);
-    background: hsla(263, 0%, 95%, 1);
-    border: 1px solid hsla(340, 80%, 50%, 1);
+    transform: rotate(-90deg) translateY(-50%) translateX(-100%);
+    transform-origin: top left;
+
+    // border: 1px solid hsla(140, 80%, 40%, 1);
+
+    display: flex;
+
+    div {
+        flex-basis: 0 0;
+        width: 100px;
+        height: 30px;
+
+        margin: 0px 5px;
+
+        text-align: center;
+        color: black;
+        background: hsla(263, 0%, 95%, 1);
+        border: 1px solid hsla(340, 80%, 50%, 1);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 `;
