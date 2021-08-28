@@ -9,17 +9,6 @@ const Home: NextPage = () => {
     return (
         <Layout>
             <Page>
-                <Bar>
-                    <Link href="/works">
-                        <a>WORKS</a>
-                    </Link>
-                    <Link href="/contact">
-                        <a>CONTACT</a>
-                    </Link>
-                    <Link href="/skillset">
-                        <a>SKILLS</a>
-                    </Link>
-                </Bar>
                 <Hero />
             </Page>
         </Layout>

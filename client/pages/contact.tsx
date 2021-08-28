@@ -8,9 +8,6 @@ const Home: NextPage = () => {
     return (
         <Layout>
             <Page>
-                <Link href="/">
-                    <a style={{ color: "black" }}>HOME</a>
-                </Link>
                 <Text>
                     <h3>NUMBER</h3>
                     <h3>SOCIAL</h3>

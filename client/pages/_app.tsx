@@ -1,29 +1,21 @@
 import React, { useEffect } from "react";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
-
-{
-    /* import { useStore } from "../store/store"; */
-}
+import { PersistGate } from "redux-persist/integration/react";
+import { useStore } from "../store";
 import { Provider, useSelector, useDispatch } from "react-redux";
-
 import { Transition, animated, config } from "react-spring";
 import styled from "styled-components";
-
-{
-    /* import { navAction } from "../store/actions/navActions"; */
-}
-{
-    /* import { AppState } from "../store/reducers/rootReducer"; */
-}
+import { navAction } from "../store/actions/navActions";
+import { AppState } from "../store/reducers/rootReducer";
 
 import "../styles/global.css";
 
+import NavBar from "../components/section/NavBar";
+
 const AppChild = ({ Component, pageProps }: AppProps) => {
     const router = useRouter();
-    {
-        /* const dispatch = useDispatch(); */
-    }
+    const dispatch = useDispatch();
     const items = [
         {
             id: router.route,
@@ -32,24 +24,21 @@ const AppChild = ({ Component, pageProps }: AppProps) => {
         },
     ];
 
-    {
-        /* const { NavOn } = useSelector((state: AppState) => state.nav); */
-    }
+    const { NavOn } = useSelector((state: AppState) => state.nav);
     {
         /* const { ModOn, ModComponent } = useSelector((state: AppState) => state.mod); */
     }
 
-    {
-        /* useEffect(() => {
-                        if (NavOn) {
-                            dispatch(navAction());
-                        }
-                    }, [router.route]); */
-    }
+    useEffect(() => {
+        if (NavOn) {
+            dispatch(navAction());
+        }
+    }, [router.route]);
 
     return (
         <>
             <NextChild>
+                <NavBar />
                 <StyledDiv>
                     <Transition
                         items={items}
@@ -96,19 +85,19 @@ const AppChild = ({ Component, pageProps }: AppProps) => {
 };
 
 const App = ({ Component, pageProps, router }: AppProps) => {
-    {
-        /* const store = useStore(pageProps.initialReduxState); */
-    }
+    const store = useStore(pageProps.initialReduxState);
 
     return (
         <>
-            {/* <Provider store={store}> */}
-            <AppChild
-                Component={Component}
-                pageProps={pageProps}
-                router={router}
-            />
-            {/* </Provider> */}
+            <Provider store={store}>
+                <PersistGate persistor={store.__PERSISTOR} loading={null}>
+                    <AppChild
+                        Component={Component}
+                        pageProps={pageProps}
+                        router={router}
+                    />
+                </PersistGate>
+            </Provider>
         </>
     );
 };

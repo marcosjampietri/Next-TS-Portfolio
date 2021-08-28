@@ -9,14 +9,6 @@ const Skills: NextPage = () => {
     return (
         <Layout>
             <Page>
-                <Bar>
-                    <Link href="/">
-                        <a>HOME</a>
-                    </Link>
-                    <Link href="/contact">
-                        <a>CONTACT</a>
-                    </Link>
-                </Bar>
                 <Skillset />
             </Page>
         </Layout>
