@@ -8,6 +8,9 @@ export interface navState {
 export interface loadState {
     isLoading: boolean;
 }
+export interface filterState {
+    activeSkill: string;
+}
 
 export interface navActionTP {
     obj: { type: "TOGGLE_NAV" };
@@ -16,9 +19,14 @@ export interface navActionTP {
 export interface isLodingActionTP {
     type: "LOADED";
 }
+export interface filterActionTP {
+    type: "CHANGE_FILTER",
+    payload: string
+}
 export interface storeType {
     navState: navState;
     loadState: loadState;
+    filterState: filterState;
 
 }
 

@@ -14,7 +14,6 @@ const NavBar = () => {
         { name: "HOME", path: "/" },
         { name: "SKILLS", path: "/skillset" },
         { name: "CONTACT", path: "/contact" },
-        { name: "WORKS", path: "/works" },
     ];
 
     const { NavOn } = useSelector((state: AppState) => state.nav);
@@ -54,32 +53,34 @@ const Nav = styled(animated.nav)`
     height: 50px;
     padding: 0px 20px;
 
-    background: hsla(220, 10%, 85%, 0.1);
+    background: hsla(220, 10%, 85%, 0.03);
     z-index: 100;
     transition: 0.5s;
 
     :hover {
         transition: 0.2s;
-        background: hsla(220, 10%, 85%, 0.95);
+        background: hsla(220, 10%, 85%, 0.15);
     }
 `;
 
 const Margin = styled.div`
     max-width: 1000px;
     width: 100%;
+
     margin: 20px auto;
 
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-around;
 
     ${below.med`
-        justify-content: space-between;
+        
     `};
 `;
 
 const Options = styled.div`
     width: 100%;
+    height: 20px;
 
     display: flex;
     justify-content: space-between;
@@ -91,6 +92,8 @@ const Options = styled.div`
 
     div {
         position: relative;
+        width: 100px;
+        height: 20px;
 
         cursor: pointer;
         transition: all 0.6s;
@@ -99,12 +102,13 @@ const Options = styled.div`
         div {
             height: 1.6em;
             position: absolute;
-            top: -6px;
-            left: -6px;
+            top: -5px;
+            left: -5px;
+            width: fit-content;
             padding: 4px;
+
             transform: scaleX(0);
             transform-origin: left;
-
             color: transparent;
             background: hsla(342, 90%, 50%, 1);
         }

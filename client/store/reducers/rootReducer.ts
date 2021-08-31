@@ -4,14 +4,14 @@ import { useSelector, TypedUseSelectorHook } from "react-redux";
 import { navReducer } from "./navReducer";
 // import { modReducer } from "./modReducer";
 // import { loadReducer } from "./loadReducer";
-// import { filterByReducer } from "./filterReducer";
+import { filterReducer } from "./filterReducer";
 
 
 const rootReducer = combineReducers({
     nav: navReducer,
     // mod: modReducer,
     // load: loadReducer,
-    // filterBy: filterByReducer,
+    filt: filterReducer,
 
 });
 

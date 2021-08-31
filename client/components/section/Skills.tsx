@@ -1,45 +1,159 @@
-import React from "react";
-import { useTrail, animated, config } from "react-spring";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "../../store/reducers/rootReducer";
+import { filterAction } from "../../store/actions/filterActions";
+import { useTrail, useTransition, animated, config } from "react-spring";
 import Link from "next/link";
 
 import { below } from "../../styles/breakpoints";
 import styled from "styled-components";
 
 const Skillset = () => {
-    const skillFront = [
+    const dispatch = useDispatch();
+
+    const allSkills = [
         {
+            typ: "FRONT",
             def: "Setup of all the technologies with Vanilla React, Next.js and Typescript",
             icon: "nxt",
             color: "",
         },
         {
+            typ: "FRONT",
             def: "Fluid Responsiveness without Bootstrap/Tailwind/Material UI",
             icon: "brn",
             color: "",
         },
         {
+            typ: "FRONT",
             def: "Use of Styled-Components ",
             icon: "stc",
             color: "",
         },
         {
+            typ: "FRONT",
             def: "Smooth and organic animations using React-Spring",
             icon: "skt",
             color: "",
         },
         {
+            typ: "FRONT",
             def: "Complex state management with Redux",
             icon: "rdx",
             color: "",
         },
         {
+            typ: "FRONT",
             def: "Use of persistent data with Local Storage",
             icon: "dkr",
             color: "",
         },
         {
+            typ: "FRONT",
             def: "Flipping cards, Scroll Effects, Parallax, Carousel, Neo-Morphism, 3D Elements, Modal Elements, Page Transitions, KeyFrames ",
             icon: "css",
+            color: "",
+        },
+        {
+            typ: "BACK",
+            def: "Stripe customised payment form with server integration",
+            icon: "stp",
+            color: "",
+        },
+        {
+            typ: "BACK",
+            def: "JWT user authentication system with encrypted data saving",
+            icon: "jwt",
+            color: "",
+        },
+        {
+            typ: "BACK",
+            def: "Robust Validation and user input",
+            icon: "unr",
+            color: "",
+        },
+        {
+            typ: "BACK",
+            def: "MongoDB operations and query system with mongoose",
+            icon: "mdb",
+            color: "",
+        },
+        {
+            typ: "DEVOPS",
+            def: "Multi-Cloud: Project built on multiple cloud services and integration with AWS and Digital Ocean",
+            icon: "dto",
+            color: "",
+        },
+        {
+            typ: "DEVOPS",
+            def: "Linux virtual machines provisioning of instances with Ansible running on remote server",
+            icon: "anb",
+            color: "",
+        },
+        {
+            typ: "DEVOPS",
+            def: "Infrastructure creation and management via Code with Terraform",
+            icon: "tfm",
+            color: "",
+        },
+        {
+            typ: "DEVOPS",
+            def: "IAM User and Permission configurations",
+            icon: "cst",
+            color: "",
+        },
+        {
+            typ: "DEVOPS",
+            def: "EC2 and Elastic Beanstalk Instance setup for Node, Docker and Python Applications",
+            icon: "aws",
+            color: "",
+        },
+        {
+            typ: "DEVOPS",
+            def: "Docker, Dockerhub, Dockerfile",
+            icon: "dkr",
+            color: "",
+        },
+        {
+            typ: "DEVOPS",
+            def: "Jenkins, groovy script",
+            icon: "jks",
+            color: "",
+        },
+        {
+            typ: "GENERAL",
+            def: "MAC OS",
+            icon: "mac",
+            color: "",
+        },
+        {
+            typ: "GENERAL",
+            def: "NPM, node and Dependencies management",
+            icon: "npm",
+            color: "",
+        },
+        {
+            typ: "GENERAL",
+            def: "AWS CLI and Excellent knowledge of Command Lines",
+            icon: "aws",
+            color: "",
+        },
+        {
+            typ: "GENERAL",
+            def: "Vim Editor",
+            icon: "lnx",
+            color: "",
+        },
+        {
+            typ: "GENERAL",
+            def: "AWS CLI and Excellent knowledge of Command Lines",
+            icon: "aws2",
+            color: "",
+        },
+        {
+            typ: "GENERAL",
+            def: "Ubuntu/Linux Machine Setup / Installations and files and folder structure",
+            icon: "ubn",
             color: "",
         },
     ];
@@ -51,14 +165,25 @@ const Skillset = () => {
         { typ: "FRONT", pos: 1 },
     ];
 
-    const [trail, api] = useTrail(skillFront.length, (i) => ({
+    const { activeSkill } = useSelector((state: AppState) => state.filt);
+
+    const filteredSkills = allSkills.filter(
+        (item, i) => item.typ === activeSkill
+    );
+
+    const [trail, api] = useTrail(filteredSkills.length, (i) => ({
         from: { opacity: 0, x: 30 },
         to: { opacity: 1, x: 0 },
+
         config: {
             tension: 500,
             friction: 80,
         },
     }));
+
+    const update = () => {
+        api.start({ opacity: 1, x: 0 });
+    };
 
     return (
         <Section>
@@ -69,28 +194,37 @@ const Skillset = () => {
                     </Name>
                     <Type>
                         {typeList.map((item, index) => (
-                            <div key={index}>{item.typ}</div>
+                            <div
+                                key={index}
+                                onClick={() => {
+                                    dispatch(filterAction(item.typ));
+                                }}
+                            >
+                                {item.typ}
+                            </div>
                         ))}
                     </Type>
-                    {trail.map(({ x, ...otherProps }, i) => (
-                        <Skill
-                            key={i}
-                            style={{
-                                ...otherProps,
-                                background: `${skillFront[i].color}`,
-                                transform: x.to(
-                                    (x) => `translate3d(${x}vw, 0, 0)`
-                                ),
-                            }}
-                        >
-                            <Icon
-                                src={`/Icons/${skillFront[i].icon}.svg`}
-                                alt="icon"
-                                width="60px"
-                            ></Icon>
-                            <h4>{skillFront[i].def}</h4>
-                        </Skill>
-                    ))}
+                    <List>
+                        {trail.map(({ x, ...otherProps }, i) => (
+                            <Skill
+                                key={i}
+                                style={{
+                                    ...otherProps,
+                                    background: `${filteredSkills[i].color}`,
+                                    transform: x.to(
+                                        (x) => `translate3d(${x}vw, 0, 0)`
+                                    ),
+                                }}
+                            >
+                                <Icon
+                                    src={`/Icons/${filteredSkills[i].icon}.svg`}
+                                    alt="icon"
+                                    width="60px"
+                                ></Icon>
+                                <h4>{filteredSkills[i].def}</h4>
+                            </Skill>
+                        ))}
+                    </List>
                 </Writes>
             </Margin>
         </Section>
@@ -180,6 +314,10 @@ const Skill = styled(animated.div)`
     align-items: center;
 
     // border: 1px solid blue;
+`;
+
+const List = styled(animated.div)`
+    position: absolute;
 `;
 const Icon = styled.img`
     flex: 0 0 35px;
