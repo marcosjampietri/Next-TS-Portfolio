@@ -172,18 +172,13 @@ const Skillset = () => {
     );
 
     const [trail, api] = useTrail(filteredSkills.length, (i) => ({
-        from: { opacity: 0, x: 30 },
-        to: { opacity: 1, x: 0 },
-
-        config: {
-            tension: 500,
-            friction: 80,
-        },
+        opacity: 1,
+        x: 30,
     }));
 
-    const update = () => {
+    useEffect(() => {
         api.start({ opacity: 1, x: 0 });
-    };
+    }, [activeSkill]);
 
     return (
         <Section>
