@@ -237,8 +237,6 @@ const Section = styled(animated.section)`
     overflow: hidden;
     background-color: hsla(263, 0%, 95%, 1);
 
-    border: 1px solid black;
-
     :after {
         position: absolute;
         bottom: 0px;
