@@ -135,6 +135,7 @@ const Text = styled.div`
     h4 {
         padding: 0px 0px 25px 0px;
         font-size: 1.5em;
+        font-weight: 600;
     }
 
     p {
@@ -164,7 +165,8 @@ const Line = styled.div`
 `;
 const Social = styled.div`
     width: 60%;
-    padding: 30px 0px;
+    margin: 0px auto;
+    padding: 20px 0px;
 
     display: flex;
     justify-content: space-between;
