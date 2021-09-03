@@ -29,7 +29,7 @@ const Shop: NextPage = () => {
                                     <br /> JAMPIETRI
                                 </h4>
                                 <p>
-                                    Get in touch with me. I'm sure I can be
+                                    Get in touch with me. I&apos;m sure I can be
                                     helpful for your business, company or
                                     project.
                                 </p>
