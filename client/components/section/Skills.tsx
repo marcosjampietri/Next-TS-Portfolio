@@ -172,7 +172,7 @@ const Skillset = () => {
     );
 
     const [trail, api] = useTrail(filteredSkills.length, (i) => ({
-        opacity: 1,
+        opacity: 0,
         x: 30,
     }));
 
