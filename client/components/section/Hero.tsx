@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { animated } from "react-spring";
-import Link from "next/link";
-
-import { below } from "../../styles/breakpoints";
 import styled from "styled-components";
 
+import { below } from "../../styles/breakpoints";
+import { AppState } from "../../store/reducers/rootReducer";
+import { vidAction, modAction } from "../../store/actions/modActions";
+import Video from "../modal/videoMod";
+
 const Hero = () => {
+    const { ModOn } = useSelector((state: AppState) => state.mod);
+
+    const dispatch = useDispatch();
+    //access rootReducer
+
+    //dispatch buttons
+    const toggleMod = () => {
+        dispatch(vidAction(<Video />));
+    };
+
+    useEffect(() => {
+        if (ModOn) {
+            dispatch(modAction());
+        }
+    }, [dispatch]);
+
     return (
         <Section>
             <Margin>
@@ -19,6 +38,7 @@ const Hero = () => {
                         DevOps infrastructures.
                     </h5>
                 </Writes>
+                <Button onClick={toggleMod}>TOGGLE MOD</Button>
                 <Me>
                     <img src="/Pics/Hero-Me.jpg" />
                 </Me>
@@ -45,7 +65,7 @@ const Section = styled(animated.section)`
         content: "";
         height: 25vh;
         width: 1px;
-        background: hsl(340, 100%, 50%);
+        background: hsla(340, 100%, 50%, 1);
     }
 
     display: flex;
@@ -65,6 +85,8 @@ const Me = styled(animated.div)`
     max-width: 1000px;
     width: 100vw;
     height: 100vh;
+
+    pointer-events: none;
 
     ${below.med`
     `}
@@ -134,4 +156,10 @@ const Name = styled.h2`
     -webkit-text-fill-color: transparent;
     font-weight: 900;
     z-index: 2;
+`;
+
+const Button = styled.button`
+    width: 100px;
+    height: 100px;
+    z-index: 99;
 `;

@@ -76,10 +76,18 @@ const Contacts: NextPage = () => {
                                     <FiGithub />
                                     <h5>github</h5>
                                 </a>
+                                <a
+                                    href="https://drive.google.com/file/d/1-qoZn9OoQ0J8_Xd3C7otJBa7-4CeoW1K/preview"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    <FiGithub />
+                                    <h5>RESUME</h5>
+                                </a>
                             </Social>
                         </BoxT>
                         <BoxI>
-                            <ServImg src="/Pics/Hero-Me.jpg" />
+                            <ServImg src="https://images.unsplash.com/flagged/photo-1595543922540-d03c3d5a684a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1953&q=80" />
                         </BoxI>
                     </Outline>
                 </div>
@@ -198,6 +206,7 @@ const ServImg = styled.img`
 
     object-fit: cover;
     object-position: 50% 20%;
+    mix-blend-mode: luminosity;
 
     box-shadow: 5px 12px 30px hsla(0, 0%, 0%, 0.99);
 `;

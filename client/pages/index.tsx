@@ -1,7 +1,4 @@
 import type { NextPage } from "next";
-{
-    /* import Link from "next/link"; */
-}
 import styled from "styled-components";
 
 import Layout from "../components/Layout";

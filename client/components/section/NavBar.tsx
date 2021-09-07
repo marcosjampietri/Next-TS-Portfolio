@@ -8,17 +8,19 @@ import { below } from "../../styles/breakpoints";
 import styled from "styled-components";
 
 import { AppState } from "../../store/reducers/rootReducer";
+import Burguer from "../micro/hamburguer";
 
 const NavBar = () => {
-    const links = [
+    {
+        /* const links = [
         { name: "HOME", path: "/" },
         { name: "SKILLS", path: "/skillset" },
         { name: "CONTACT", path: "/contact" },
-    ];
+    ]; */
+    }
 
     const { NavOn } = useSelector((state: AppState) => state.nav);
     const dispatch = useDispatch();
-    //dispatch buttons
     const toggleNav = () => {
         dispatch(navAction());
     };
@@ -29,7 +31,7 @@ const NavBar = () => {
                 {/* <Link href="/">
                     <a onClick={toggleNav}>NAVVV</a>
                 </Link> */}
-                <Options>
+                {/* <Options>
                     {links.map((item, index) => (
                         <Link key={index} href={item.path}>
                             <div>
@@ -38,8 +40,8 @@ const NavBar = () => {
                             </div>
                         </Link>
                     ))}
-                </Options>
-                {/* <Burguer /> */}
+                </Options> */}
+                <Burguer />
             </Margin>
         </Nav>
     );

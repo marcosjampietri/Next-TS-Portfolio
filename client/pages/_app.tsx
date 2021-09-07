@@ -12,6 +12,8 @@ import { AppState } from "../store/reducers/rootReducer";
 import "../styles/global.css";
 
 import NavBar from "../components/section/NavBar";
+import Menu from "../components/micro/menu";
+import Modal from "../components/modal/Modal";
 
 const AppChild = ({ Component, pageProps }: AppProps) => {
     const router = useRouter();
@@ -25,9 +27,8 @@ const AppChild = ({ Component, pageProps }: AppProps) => {
     ];
 
     const { NavOn } = useSelector((state: AppState) => state.nav);
-    {
-        /* const { ModOn, ModComponent } = useSelector((state: AppState) => state.mod); */
-    }
+
+    const { ModOn, modComponent } = useSelector((state: AppState) => state.mod);
 
     useEffect(() => {
         if (NavOn) {
@@ -39,6 +40,8 @@ const AppChild = ({ Component, pageProps }: AppProps) => {
         <>
             <NextChild>
                 <NavBar />
+                <Menu />
+                <Modal>{modComponent}</Modal>
                 <StyledDiv>
                     <Transition
                         items={items}

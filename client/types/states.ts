@@ -4,12 +4,16 @@ import { ThunkAction } from "redux-thunk";
 export interface navState {
     NavOn: boolean;
 }
-
+export interface modState {
+    ModOn: boolean;
+    modComponent: JSX.Element | null;
+}
 export interface loadState {
     isLoading: boolean;
 }
 export interface filterState {
     activeSkill: string;
+    index: number;
 }
 
 export interface navActionTP {
@@ -25,6 +29,7 @@ export interface filterActionTP {
 }
 export interface storeType {
     navState: navState;
+    modState: modState;
     loadState: loadState;
     filterState: filterState;
 

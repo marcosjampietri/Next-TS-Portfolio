@@ -1,7 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../../store/reducers/rootReducer";
-import { filterAction } from "../../store/actions/filterActions";
+import {
+    filterAction,
+    fltFrontAction,
+    fltBackAction,
+    fltDevAction,
+    fltGenAction,
+} from "../../store/actions/filterActions";
 import { useTrail, useTransition, animated, config } from "react-spring";
 import Link from "next/link";
 
@@ -11,7 +17,7 @@ import styled from "styled-components";
 const Skillset = () => {
     const dispatch = useDispatch();
 
-    const allSkills = [
+    const frontSkills = [
         {
             typ: "FRONT",
             def: "Setup of all the technologies with Vanilla React, Next.js and Typescript",
@@ -54,6 +60,9 @@ const Skillset = () => {
             icon: "css",
             color: "",
         },
+    ];
+
+    const backSkills = [
         {
             typ: "BACK",
             def: "Stripe customised payment form with server integration",
@@ -78,6 +87,9 @@ const Skillset = () => {
             icon: "mdb",
             color: "",
         },
+    ];
+
+    const devSkills = [
         {
             typ: "DEVOPS",
             def: "Multi-Cloud: Project built on multiple cloud services and integration with AWS and Digital Ocean",
@@ -120,6 +132,9 @@ const Skillset = () => {
             icon: "jks",
             color: "",
         },
+    ];
+
+    const genSkills = [
         {
             typ: "GENERAL",
             def: "MAC OS",
@@ -159,17 +174,17 @@ const Skillset = () => {
     ];
 
     const typeList = [
-        { typ: "GENERAL", pos: 4 },
-        { typ: "DEVOPS", pos: 3 },
-        { typ: "BACK", pos: 2 },
-        { typ: "FRONT", pos: 1 },
+        { typ: "GENERAL", data: frontSkills, action: fltGenAction() },
+        { typ: "DEVOPS", data: backSkills, action: fltDevAction() },
+        { typ: "BACK", data: devSkills, action: fltBackAction() },
+        { typ: "FRONT", data: genSkills, action: fltFrontAction() },
     ];
 
-    const { activeSkill } = useSelector((state: AppState) => state.filt);
+    const { activeSkill, index } = useSelector((state: AppState) => state.filt);
 
-    const filteredSkills = allSkills.filter(
-        (item, i) => item.typ === activeSkill
-    );
+    const filteredSkills = typeList[index].data.map((item, i) => item);
+
+    console.log(filteredSkills.length);
 
     const [trail, api] = useTrail(filteredSkills.length, (i) => ({
         opacity: 0,
@@ -178,7 +193,7 @@ const Skillset = () => {
 
     useEffect(() => {
         api.start({ opacity: 1, x: 0 });
-    }, [activeSkill]);
+    }, [activeSkill, index, filteredSkills]);
 
     return (
         <Section>
@@ -192,7 +207,7 @@ const Skillset = () => {
                             <div
                                 key={index}
                                 onClick={() => {
-                                    dispatch(filterAction(item.typ));
+                                    dispatch(item.action);
                                 }}
                             >
                                 {item.typ}
