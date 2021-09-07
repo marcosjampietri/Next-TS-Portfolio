@@ -11,36 +11,21 @@ import { AppState } from "../../store/reducers/rootReducer";
 import Burguer from "../micro/hamburguer";
 
 const NavBar = () => {
-    {
-        /* const links = [
-        { name: "HOME", path: "/" },
-        { name: "SKILLS", path: "/skillset" },
-        { name: "CONTACT", path: "/contact" },
-    ]; */
-    }
-
     const { NavOn } = useSelector((state: AppState) => state.nav);
     const dispatch = useDispatch();
     const toggleNav = () => {
-        dispatch(navAction());
+        if (NavOn) {
+            dispatch(navAction());
+        }
     };
 
     return (
         <Nav>
             <Margin>
-                {/* <Link href="/">
-                    <a onClick={toggleNav}>NAVVV</a>
-                </Link> */}
-                {/* <Options>
-                    {links.map((item, index) => (
-                        <Link key={index} href={item.path}>
-                            <div>
-                                <div>{item.name}</div>
-                                <a>{item.name}</a>
-                            </div>
-                        </Link>
-                    ))}
-                </Options> */}
+                <Link href="/">
+                    <Logo src="/MJ(LOGO).svg" onClick={toggleNav} />
+                </Link>
+
                 <Burguer />
             </Margin>
         </Nav>
@@ -52,27 +37,38 @@ export default NavBar;
 const Nav = styled(animated.nav)`
     position: fixed;
     width: 100vw;
-    height: 50px;
+
     padding: 0px 20px;
 
-    background: hsla(220, 10%, 85%, 0.03);
+    background: hsla(220, 10%, 85%, 0.01);
     z-index: 100;
     transition: 0.5s;
 
     :hover {
         transition: 0.2s;
-        background: hsla(220, 10%, 85%, 0.15);
+        background: hsla(220, 10%, 85%, 0.05);
     }
+`;
+
+const Logo = styled.img`
+    width: 50px;
+    height: 100%;
+    margin-top: -5px;
+
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 50px hsla(340, 100%, 70%, 0.3));
 `;
 
 const Margin = styled.div`
     max-width: 1000px;
     width: 100%;
 
-    margin: 20px auto;
+    margin: 10px auto;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
     ${below.med`

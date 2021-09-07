@@ -14,6 +14,7 @@ import "../styles/global.css";
 import NavBar from "../components/section/NavBar";
 import Menu from "../components/micro/menu";
 import Modal from "../components/modal/Modal";
+import Blur from "../components/micro/blur";
 
 const AppChild = ({ Component, pageProps }: AppProps) => {
     const router = useRouter();
@@ -42,6 +43,8 @@ const AppChild = ({ Component, pageProps }: AppProps) => {
                 <NavBar />
                 <Menu />
                 <Modal>{modComponent}</Modal>
+                <Blur />
+
                 <StyledDiv>
                     <Transition
                         items={items}

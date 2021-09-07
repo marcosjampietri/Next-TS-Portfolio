@@ -24,12 +24,12 @@ const Blur = () => {
 export default Blur;
 
 const Blured = styled(animated.div)`
+    width: 100vw;
+    height: 100vh;
     opacity: 0;
-    diplay: block;
+
     pointer-events: none;
     position: fixed;
-    width: 100vw;
-    height: 100%;
 
     z-index: 7;
     backdrop-filter: blur(20px);

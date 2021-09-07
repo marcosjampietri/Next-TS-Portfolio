@@ -19,25 +19,25 @@ const Menu = () => {
     const menuIt = [
         {
             name: "HOME",
-            color: "hsla(240, 10%, 40%, 0.8)",
+            color: "hsla(263, 12%, 40%, 0.8)",
             path: "/",
             target: undefined,
         },
         {
             name: "EXPERIENCE",
-            color: "hsla(240, 10%, 30%, 0.8)",
+            color: "hsla(263, 12%, 30%, 0.8)",
             path: "/skillset",
             target: undefined,
         },
         {
             name: "CONTACT",
-            color: "hsla(240, 10%, 20%, 0.8)",
+            color: "hsla(263, 12%, 20%, 0.8)",
             path: "/contact",
             target: undefined,
         },
         {
             name: "RESUME",
-            color: "hsla(240, 10%, 20%, 0.8)",
+            color: "hsla(263, 12%, 10%, 0.8)",
             path: "https://drive.google.com/file/d/1-qoZn9OoQ0J8_Xd3C7otJBa7-4CeoW1K/preview",
             target: "_blank",
         },
@@ -47,10 +47,9 @@ const Menu = () => {
         opacity?: number;
         position?: number;
     }
-
     const textSwipe = useSpring<springProps>({
         config: config.slow,
-        delay: 800,
+        delay: 1000,
         opacity: NavOn ? 1 : 0,
         position: "absolute",
     });
@@ -58,11 +57,10 @@ const Menu = () => {
     interface trailProps {
         position?: number;
     }
-
     const trail = useTrail<trailProps>(menuIt.length, {
         config: config.slow,
         from: { opacity: 0, x: 0 },
-        to: { opacity: NavOn ? 1 : 0, x: NavOn ? -30 : -100 },
+        to: { opacity: NavOn ? 1 : 0, x: NavOn ? 0 : -100 },
     });
 
     return (
@@ -103,24 +101,23 @@ const MenuST = styled(animated.div)`
     top: 0px;
 
     z-index: 8;
-    width: 100vw;
+    width: 70vw;
     height: 100vh;
     display: grid;
 
     grid-template-columns: 1fr;
-    grid-template-rows: 120px repeat(4, 1fr) 100px;
+    grid-template-rows: 80px repeat(4, 1fr) 10vh;
     div:nth-of-type(1) {
-        grid-row: span 2;
-        a {
-            padding-top: 120px;
-        }
+        grid-row: 2;
+    }
+    div:nth-of-type(2) {
+        grid-row: 3;
+    }
+    div:nth-of-type(3) {
+        grid-row: 4;
     }
     div:nth-of-type(4) {
-        grid: 4;
-        grid-row: span 2;
-        a {
-            padding-bottom: 120px;
-        }
+        grid-row: 5;
     }
 
     pointer-events: none;
@@ -130,26 +127,25 @@ const MenuItem = styled(animated.div)`
 
     display: flex;
 
-    font-size: clamp(1rem, 2.5vw, 2rem);
-    font-weight: 900;
     pointer-events: all;
-
-    a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        color: white;
-        cursor: pointer;
-
-        font-size: 30px;
-
-        :hover {
-            background: hsla(340, 100%, 50%, 1);
-            text-shadow: 0px 0px 10px white;
-        }
-    }
 `;
 
-const Aaa = styled(animated.a)``;
+const Aaa = styled(animated.a)`
+    width: 100%;
+    height: 100%;
+    font-size: clamp(1rem, 3.5vw, 2.5rem);
+
+    font-weight: 700;
+    color: hsla(0, 0%, 80%, 1);
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    :hover {
+        background: hsla(340, 100%, 50%, 1);
+        text-shadow: 0px 0px 10px white;
+        color: hsla(0, 0%, 100%, 1);
+    }
+`;

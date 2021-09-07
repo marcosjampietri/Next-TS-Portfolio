@@ -1,30 +1,12 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+
 import { animated } from "react-spring";
 import styled from "styled-components";
 
 import { below } from "../../styles/breakpoints";
-import { AppState } from "../../store/reducers/rootReducer";
-import { vidAction, modAction } from "../../store/actions/modActions";
-import Video from "../modal/videoMod";
+import Btn3D from "../micro/button3D";
 
 const Hero = () => {
-    const { ModOn } = useSelector((state: AppState) => state.mod);
-
-    const dispatch = useDispatch();
-    //access rootReducer
-
-    //dispatch buttons
-    const toggleMod = () => {
-        dispatch(vidAction(<Video />));
-    };
-
-    useEffect(() => {
-        if (ModOn) {
-            dispatch(modAction());
-        }
-    }, [dispatch]);
-
     return (
         <Section>
             <Margin>
@@ -37,8 +19,8 @@ const Hero = () => {
                         exceptional websites, servers, and complete Multi-Cloud
                         DevOps infrastructures.
                     </h5>
+                    <Btn3D />
                 </Writes>
-                <Button onClick={toggleMod}>TOGGLE MOD</Button>
                 <Me>
                     <img src="/Pics/Hero-Me.jpg" />
                 </Me>
@@ -85,6 +67,7 @@ const Me = styled(animated.div)`
     max-width: 1000px;
     width: 100vw;
     height: 100vh;
+    z-index: 0;
 
     pointer-events: none;
 
@@ -102,7 +85,7 @@ const Me = styled(animated.div)`
         mix-blend-mode: luminosity;
 
         ${below.small`
-            // top: 12vw;
+            top: 12vw;
             left: -25vw;
             
         `}
@@ -112,8 +95,8 @@ const Me = styled(animated.div)`
 const Writes = styled(animated.div)`
     max-width: 500px;
     padding: 0px 20px;
-    height: 35vh;
-    z-index: 2;
+
+    z-index: 100;
 
     display: flex;
     justify-content: space-between;
@@ -150,16 +133,10 @@ const Name = styled.h2`
     background: -webkit-linear-gradient(
         120deg,
         hsl(340, 100%, 50%),
-        hsl(350, 100%, 50%)
+        hsl(350, 100%, 60%)
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 900;
     z-index: 2;
-`;
-
-const Button = styled.button`
-    width: 100px;
-    height: 100px;
-    z-index: 99;
 `;
