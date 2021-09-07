@@ -8,7 +8,11 @@ const Blur = () => {
     const { NavOn } = useSelector((state: AppState) => state.nav);
     const { ModOn } = useSelector((state: AppState) => state.mod);
 
-    const blur = useSpring({
+    interface springProps {
+        pointerEvents?: string;
+    }
+
+    const blur = useSpring<springProps>({
         opacity: NavOn || ModOn ? "1" : "0",
         diplay: NavOn || ModOn ? "block" : "none",
         pointerEvents: NavOn || ModOn ? "all" : "none",

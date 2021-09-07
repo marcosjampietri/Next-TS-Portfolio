@@ -22,19 +22,24 @@ const Burger = () => {
         }
     }, [dispatch]);
 
-    const first = useSpring({
+    interface springProps {
+        position?: string;
+        transform?: string;
+    }
+
+    const first = useSpring<springProps>({
         position: "absolute",
         transform: NavOn
             ? "translate(15px, 35px) rotate(-45deg)"
             : "translate(10px, 8px) rotate(0deg)",
     });
-    const second = useSpring({
+    const second = useSpring<springProps>({
         position: "absolute",
         transform: NavOn
             ? "translate(20px, 7px) rotate(45deg)"
             : "translate(10px, 20px) rotate(0deg)",
     });
-    const third = useSpring({
+    const third = useSpring<springProps>({
         position: "absolute",
         transform: NavOn
             ? "translate(15px, 35px) rotate(-45deg)"

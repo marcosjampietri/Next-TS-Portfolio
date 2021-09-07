@@ -21,19 +21,19 @@ const Menu = () => {
             name: "HOME",
             color: "hsla(240, 10%, 40%, 0.8)",
             path: "/",
-            target: null,
+            target: undefined,
         },
         {
             name: "EXPERIENCE",
             color: "hsla(240, 10%, 30%, 0.8)",
             path: "/skillset",
-            target: null,
+            target: undefined,
         },
         {
             name: "CONTACT",
             color: "hsla(240, 10%, 20%, 0.8)",
             path: "/contact",
-            target: null,
+            target: undefined,
         },
         {
             name: "RESUME",
@@ -43,14 +43,23 @@ const Menu = () => {
         },
     ];
 
-    const textSwipe = useSpring({
+    interface springProps {
+        opacity?: number;
+        position?: number;
+    }
+
+    const textSwipe = useSpring<springProps>({
         config: config.slow,
         delay: 800,
         opacity: NavOn ? 1 : 0,
         position: "absolute",
     });
 
-    const trail = useTrail(menuIt.length, {
+    interface trailProps {
+        position?: number;
+    }
+
+    const trail = useTrail<trailProps>(menuIt.length, {
         config: config.slow,
         from: { opacity: 0, x: 0 },
         to: { opacity: NavOn ? 1 : 0, x: NavOn ? -30 : -100 },
@@ -64,7 +73,9 @@ const Menu = () => {
                     style={{
                         ...otherProps,
                         background: `${menuIt[i].color}`,
-                        transform: x.to((x) => `translate3d(${x}vw, 0, 0)`),
+                        transform: x.to(
+                            (x: any) => `translate3d(${x}vw, 0, 0)`
+                        ),
                     }}
                 >
                     <Link href={menuIt[i].path}>
