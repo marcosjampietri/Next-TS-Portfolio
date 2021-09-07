@@ -14,11 +14,47 @@ import {
 import { below } from "../../styles/breakpoints";
 
 const Contacts: NextPage = () => {
+    const socials = [
+        {
+            name: "instagram",
+            icon: <FiInstagram />,
+            ref: "https://www.instagram.com/marcosjampietri/",
+        },
+        {
+            name: "linkdin",
+            icon: <FiLinkedin />,
+            ref: "https://www.linkedin.com/in/marcos-jampietri-9942115b/",
+        },
+        {
+            name: "github",
+            icon: <FiGithub />,
+            ref: "https://github.com/marcosjampietri",
+        },
+    ];
+
+    const contacts = [
+        {
+            name: "Camden Town, London, UK",
+            icon: <FiMapPin />,
+            ref: "https://www.instagram.com/marcosjampietri/",
+        },
+        {
+            name: "mgjampietri@gmail.com",
+            icon: <FiMail />,
+            ref: "https://www.linkedin.com/in/marcos-jampietri-9942115b/",
+        },
+        {
+            name: "+44 077",
+            icon: <FiPhone />,
+            ref: "https://github.com/marcosjampietri",
+        },
+    ];
+
     return (
         <Section>
             <Margin>
-                <div>
-                    <Outline>
+                <Outline>
+                    <div>
                         <BoxT>
                             <Text>
                                 <h4>
@@ -32,65 +68,33 @@ const Contacts: NextPage = () => {
                                 </p>
                             </Text>
                             <List>
-                                <Line>
-                                    <div>
-                                        <FiMapPin />
-                                    </div>
-                                    <h5>Camden Town, London, UK</h5>
-                                </Line>
-                                <Line>
-                                    <div>
-                                        <FiMail />
-                                    </div>
-                                    <h5>mgjampietri@gmail.com</h5>
-                                </Line>
-                                <Line>
-                                    <div>
-                                        <FiPhone />
-                                    </div>
-                                    <h5>+44 hidden</h5>
-                                </Line>
+                                {contacts.map((item, index) => (
+                                    <Line key={index}>
+                                        <div>{item.icon}</div>
+                                        <h5>{item.name}</h5>
+                                    </Line>
+                                ))}
                             </List>
+
                             <Social>
-                                <a
-                                    href="https://www.instagram.com/marcosjampietri/"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    <FiInstagram />
-                                    <h5>instagram</h5>
-                                </a>
-                                <a
-                                    href="https://www.linkedin.com/in/marcos-jampietri-9942115b/"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    <FiLinkedin />
-                                    <h5>linkdin</h5>
-                                </a>
-                                <a
-                                    href="https://github.com/marcosjampietri"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    <FiGithub />
-                                    <h5>github</h5>
-                                </a>
-                                <a
-                                    href="https://drive.google.com/file/d/1-qoZn9OoQ0J8_Xd3C7otJBa7-4CeoW1K/preview"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    <FiGithub />
-                                    <h5>RESUME</h5>
-                                </a>
+                                {socials.map((item, index) => (
+                                    <a
+                                        key={index}
+                                        href={item.ref}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        {item.icon}
+                                        <h5>{item.name}</h5>
+                                    </a>
+                                ))}
                             </Social>
                         </BoxT>
                         <BoxI>
                             <ServImg src="https://images.unsplash.com/flagged/photo-1595543922540-d03c3d5a684a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1953&q=80" />
                         </BoxI>
-                    </Outline>
-                </div>
+                    </div>
+                </Outline>
             </Margin>
         </Section>
     );
@@ -122,14 +126,16 @@ const Margin = styled.div`
 `;
 
 const Outline = styled.div`
+    margin: 75px;
     padding: calc(25px + 2.5vw) 0px;
 
     outline: 1px solid hsl(340, 100%, 50%);
     outline-offset: -40px;
+    div {
+        display: flex;
 
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
 `;
 const BoxT = styled.div`
     flex: 1 1 481px;
@@ -173,7 +179,7 @@ const Line = styled.div`
     display: flex;
     align-items: center;
 `;
-const Social = styled.div`
+const Social = styled.ul`
     width: 60%;
     margin: 0px auto;
     padding: 20px 0px;
