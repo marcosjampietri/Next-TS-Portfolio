@@ -114,6 +114,7 @@ const Btn3DST = styled.button`
         transition: 1s;
         transition-timing-function: cubic-bezier(0.98, 0, 0, 0.99);
         color: white;
+        font-weight: 400;
 
         display: flex;
         align-items: center;

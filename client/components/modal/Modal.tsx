@@ -114,9 +114,9 @@ const Cross = styled.div`
     height: 50px;
 
     cursor: pointer;
-    background: white;
+    background: #e5e5e5ff;
     border-radius: 50%;
-    box-shadow: 2px 2px 10px hsla(0, 0%, 0%, 0.3);
+    box-shadow: 2px 2px 10px hsla(0, 0%, 0%, 0.5);
 
     display: flex;
     justify-content: center;
@@ -124,5 +124,6 @@ const Cross = styled.div`
 
     svg {
         font-size: 2em;
+        stroke: purple;
     }
 `;
