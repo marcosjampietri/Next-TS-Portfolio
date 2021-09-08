@@ -106,7 +106,7 @@ const MenuST = styled(animated.div)`
     display: grid;
 
     grid-template-columns: 1fr;
-    grid-template-rows: 80px repeat(4, 1fr) 10vh;
+    grid-template-rows: 80px repeat(4, 1fr) 15vh;
     div:nth-of-type(1) {
         grid-row: 2;
     }

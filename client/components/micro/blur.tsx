@@ -32,5 +32,5 @@ const Blured = styled(animated.div)`
     position: fixed;
 
     z-index: 7;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(15px);
 `;
