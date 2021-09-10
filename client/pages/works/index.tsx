@@ -10,10 +10,9 @@ import Case1 from "../../components/section/Case1";
 import Case2 from "../../components/section/Case2";
 
 const Works: NextPage = () => {
-    const cases = [<Case1 />, <Case2 />];
-
     const [index, setIndex] = useState(0);
     const [disable, setDisable] = useState(false);
+    const cases = [<Case1 key={index} />, <Case2 key={index} />];
 
     const transitions = useTransition(index, {
         key: index,
@@ -60,7 +59,9 @@ const Works: NextPage = () => {
                     </ButtonP>
                 </Controls>
                 {transitions((style, i) => (
-                    <CaseWrap style={style}>{cases[i]}</CaseWrap>
+                    <CaseWrap style={style} key={index}>
+                        {cases[i]}
+                    </CaseWrap>
                 ))}
             </Page>
         </Layout>

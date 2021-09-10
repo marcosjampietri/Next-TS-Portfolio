@@ -92,8 +92,9 @@ const Case1 = () => {
                 {transitions2((styles, item) =>
                     item ? (
                         <Description style={styles}>
-                            <h2>WEB DESIGN</h2>
-                            <h4>{cases[0].name} </h4>
+                            <TTL> {cases[0].name} </TTL>
+                            <Line />
+                            <TH2>WEB DESIGN</TH2>
                         </Description>
                     ) : null
                 )}
@@ -138,13 +139,34 @@ const Margin = styled.div`
 
     perspective: 800px;
     h4,
-    h2 {
+    h2,
+    h1 {
         color: black;
     }
 `;
 
 const Description = styled(animated.div)`
     border: 1px solid black;
+`;
+
+const Line = styled.div`
+    width: 80%;
+    height: 1px;
+    margin: 0 auto;
+    background: red;
+`;
+
+const TTL = styled(animated.h1)`
+    color: black;
+    font-size: clamp(1em, 2.3vw, 3em);
+    font-weight: 500;
+    margin: 10px;
+`;
+const TH2 = styled(animated.h2)`
+    color: black;
+    font-size: clamp(1em, 1.3vw, 2em);
+    font-weight: 300;
+    margin: 20px;
 `;
 
 const Pair = styled(animated.div)`
