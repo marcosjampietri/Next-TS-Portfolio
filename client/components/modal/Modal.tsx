@@ -92,7 +92,8 @@ const Box = styled.div`
     width: 80vw;
     height: 60vh;
 
-    border-radius: 10px;
+    // border-radius: 10px;
+    border: 2px solid hsla(341, 100%, 50%, 1);
     background: white;
     box-shadow: 2px 2px 20px hsla(0, 0%, 0%, 0.3);
 
@@ -101,8 +102,8 @@ const Box = styled.div`
     align-items: center;
 `;
 const Content = styled.div`
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
 
     object-fit: cover;
 `;

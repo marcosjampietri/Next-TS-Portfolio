@@ -24,9 +24,9 @@ const Menu = () => {
             target: undefined,
         },
         {
-            name: "EXPERIENCE",
+            name: "WORKS",
             color: "hsla(263, 12%, 30%, 0.8)",
-            path: "/skillset",
+            path: "/works",
             target: undefined,
         },
         {

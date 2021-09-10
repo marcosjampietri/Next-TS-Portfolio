@@ -9,7 +9,7 @@ import { animated, useTransition, config } from "react-spring";
 }
 import styled from "styled-components";
 
-const Case1 = () => {
+const Case2 = () => {
     const [mount, setMount] = useState(false);
 
     useEffect(() => {
@@ -18,8 +18,7 @@ const Case1 = () => {
 
     const cases = [
         {
-            name: "PROFESSIONAL POTOGRAPHER PORTFOLIO",
-            image: "/Pics/andrea.jpg",
+            name: "Andrea Site",
             desc: "this case was very nice",
             tech: [
                 "Next.js",
@@ -76,43 +75,43 @@ const Case1 = () => {
     return (
         <Section>
             <Margin>
-                {/* {cases.map((item, index) => (
-                    <Pair key={index}>
-                        <div>
-                            <h3>name: </h3>
-                            <h4>{item.name}</h4>
-                        </div>
-                        <div>
-                            <h3>description: </h3>
-                            <h4>{item.desc}</h4>
-                        </div>
-                    </Pair>
-                ))} */}
-
+                <div>
+                    <h2>TITLE</h2>
+                    {cases.map((item, index) => (
+                        <Pair key={index}>
+                            <div>
+                                <h3>name: </h3>
+                                <h4>{item.name}</h4>
+                            </div>
+                            <div>
+                                <h3>description: </h3>
+                                <h4>{item.desc}</h4>
+                            </div>
+                        </Pair>
+                    ))}
+                </div>
                 {transitions2((styles, item) =>
                     item ? (
-                        <Description style={styles}>
-                            <h2>WEB DESIGN</h2>
-                            <h4>{cases[0].name} </h4>
-                        </Description>
+                        <Writes style={styles}>
+                            <h4>CASE_222222 </h4>
+                        </Writes>
                     ) : null
                 )}
                 {transitions((styles, item) =>
-                    item ? (
-                        <Image src={cases[0].image} style={styles}></Image>
-                    ) : null
+                    item ? <Box style={styles}></Box> : null
                 )}
             </Margin>
         </Section>
     );
 };
 
-export default Case1;
+export default Case2;
 
 const Section = styled.section`
     position: relative;
     width: 100vw;
     height: 100%;
+    min-height: 500px;
 
     overflow: hidden;
     background-color: hsla(263, 39%, 100%, 1);
@@ -134,7 +133,11 @@ const Margin = styled.div`
     height: 100%;
     margin: 0px auto;
 
-    border: 1px solid black;
+    border: 1px solid yellow;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     perspective: 800px;
     h4,
@@ -143,8 +146,8 @@ const Margin = styled.div`
     }
 `;
 
-const Description = styled(animated.div)`
-    border: 1px solid black;
+const Writes = styled(animated.div)`
+    border: 1px solid yellow;
 `;
 
 const Pair = styled(animated.div)`
@@ -156,12 +159,9 @@ const Pair = styled(animated.div)`
     display: flex;
 `;
 
-const Image = styled(animated.img)`
+const Box = styled(animated.div)`
+    background-color: red;
     border: 1px solid black;
-    width: 55vw;
-    height: 35vh;
-    background-color: blue;
-
-    object-fit: cover;
-    object-position: 0% 20%;
+    width: 70vw;
+    height: 50vh;
 `;
