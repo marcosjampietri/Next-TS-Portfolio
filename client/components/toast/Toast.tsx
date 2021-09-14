@@ -6,7 +6,7 @@ import { animated, config, useTransition } from "react-spring";
 import styled from "styled-components";
 
 import { AppState } from "../../store/reducers/rootReducer";
-import { modAction } from "../../store/actions/modActions";
+import { toastOFFAction } from "../../store/actions/toastActions";
 
 import { FiX } from "react-icons/fi";
 
@@ -16,7 +16,7 @@ const useOutsideAlerter = (ref: React.RefObject<HTMLElement>) => {
     useEffect(() => {
         const handleClickOutside = (event: any) => {
             if (ref.current && !ref.current.contains(event.target)) {
-                dispatch(modAction());
+                dispatch(toastOFFAction());
             }
         };
 
@@ -33,82 +33,69 @@ type Props = {
     children: JSX.Element;
 };
 
-const Modal = ({ children }: Props) => {
+const Toast = ({ children }: Props) => {
+    const { ToastOn } = useSelector((state: AppState) => state.toast);
+
+    const toggleToast = () => {
+        dispatch(toastOFFAction());
+    };
+
     const dispatch = useDispatch();
     const wrapperRef = useRef(null);
 
     useOutsideAlerter(wrapperRef);
 
-    //access rootReducer
-    const { ModOn } = useSelector((state: AppState) => state.mod);
-    const ModOff = () => {
-        if (ModOn) {
-            dispatch(modAction());
-        }
-    };
-
-    const transitions = useTransition(ModOn, {
-        from: { opacity: 0, y: 50 },
-        enter: { opacity: 1, y: 0 },
+    const transitions = useTransition(ToastOn, {
+        from: { opacity: 0 },
+        enter: { opacity: 1 },
         leave: { opacity: 0 },
-        reverse: ModOn,
-        delay: 0,
+        reverse: ToastOn,
+        delay: 100,
         config: config.slow,
     });
 
-    return transitions((styles, item) =>
-        item ? (
-            <ModalSt style={styles}>
-                <Box ref={wrapperRef}>
-                    <Cross onClick={ModOff}>
-                        <FiX />
-                    </Cross>
-                    <Content>{children}</Content>
-                </Box>
-            </ModalSt>
-        ) : null
+    return (
+        <>
+            {transitions((styles, item) =>
+                item ? (
+                    <ToastSt style={styles}>
+                        <Box ref={wrapperRef}>
+                            <Content>
+                                {children}
+                                <Cross onClick={toggleToast}>
+                                    <FiX />
+                                </Cross>
+                            </Content>
+                        </Box>
+                    </ToastSt>
+                ) : null
+            )}
+        </>
     );
 };
 
-export default Modal;
+export default Toast;
 
-const ModalSt = styled(animated.div)`
-    position: fixed;
+const ToastSt = styled(animated.div)`
+    position: absolute;
     width: 100vw;
+    max-width: 1200px;
     height: 100vh;
-
-    opacity: 1;
-    diplay: block;
-
-    z-index: 9999999;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    z-index: 99;
 `;
 
 const Box = styled.div`
     position: relative;
-    width: 100%;
 
-    margin: 0px 10vw;
-    \
+    margin: 20vh 30px;
+    padding: 15px;
 
+    box-shadow: 2px 2px 20px hsla(0, 0%, 0%, 0.5);
+    background: hsla(0, 0%, 100%, 0.7);
     border-radius: 5px;
-    border: 2px solid hsla(341, 100%, 50%, 1);
-    background: white;
-    box-shadow: 2px 2px 20px hsla(0, 0%, 0%, 0.3);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    backdrop-filter: blur(10px);
 `;
-const Content = styled.div`
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-`;
+const Content = styled.div``;
 const Cross = styled.div`
     position: absolute;
     top: -25px;

@@ -8,6 +8,10 @@ export interface modState {
     ModOn: boolean;
     modComponent: JSX.Element | null;
 }
+export interface toastState {
+    ToastOn: boolean;
+    toastComponent: JSX.Element | null;
+}
 export interface loadState {
     isLoading: boolean;
 }
@@ -30,6 +34,7 @@ export interface filterActionTP {
 export interface storeType {
     navState: navState;
     modState: modState;
+    toastState: toastState;
     loadState: loadState;
     filterState: filterState;
 

@@ -5,6 +5,7 @@ import { navReducer } from "./navReducer";
 import { modReducer } from "./modReducer";
 // import { loadReducer } from "./loadReducer";
 import { filterReducer } from "./filterReducer";
+import { toastReducer } from "./toastReducer";
 
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     mod: modReducer,
     // load: loadReducer,
     filt: filterReducer,
+    toast: toastReducer,
 
 });
 

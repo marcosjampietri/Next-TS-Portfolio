@@ -24,9 +24,9 @@ const Menu = () => {
             target: undefined,
         },
         {
-            name: "WORKS",
+            name: "PORTFOLIO",
             color: "hsla(263, 12%, 30%, 0.8)",
-            path: "/works",
+            path: "/portfolio",
             target: undefined,
         },
         {
@@ -36,8 +36,14 @@ const Menu = () => {
             target: undefined,
         },
         {
-            name: "RESUME",
+            name: "SKILLS",
             color: "hsla(263, 12%, 10%, 0.8)",
+            path: "/skillset",
+            target: undefined,
+        },
+        {
+            name: "RESUME",
+            color: "hsla(263, 12%, 5%, 0.8)",
             path: "https://drive.google.com/file/d/1-qoZn9OoQ0J8_Xd3C7otJBa7-4CeoW1K/preview",
             target: "_blank",
         },
@@ -106,7 +112,7 @@ const MenuST = styled(animated.div)`
     display: grid;
 
     grid-template-columns: 1fr;
-    grid-template-rows: 80px repeat(4, 1fr) 15vh;
+    grid-template-rows: 80px repeat(5, 1fr) 15vh;
     div:nth-of-type(1) {
         grid-row: 2;
     }
@@ -118,6 +124,9 @@ const MenuST = styled(animated.div)`
     }
     div:nth-of-type(4) {
         grid-row: 5;
+    }
+    div:nth-of-type(5) {
+        grid-row: 6;
     }
 
     pointer-events: none;

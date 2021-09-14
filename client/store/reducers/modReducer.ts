@@ -18,6 +18,12 @@ export const modReducer = (state: modState = initState, action: any) => {
                 ModOn: true,
                 modComponent: action.payload,
             };
+        case "TOGGLE_MOD_SKL":
+            return {
+                ...state,
+                ModOn: true,
+                modComponent: action.payload,
+            };
         case "TOGGLE_MOD_OFF":
             return {
                 ...state,
