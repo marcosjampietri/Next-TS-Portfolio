@@ -39,14 +39,9 @@ const Contacts: NextPage = () => {
             ref: "https://www.instagram.com/marcosjampietri/",
         },
         {
-            name: "mgjampietri@gmail.com",
+            name: "mgjampietri@hotmail.com",
             icon: <FiMail />,
             ref: "https://www.linkedin.com/in/marcos-jampietri-9942115b/",
-        },
-        {
-            name: "+44 077",
-            icon: <FiPhone />,
-            ref: "https://github.com/marcosjampietri",
         },
     ];
 
@@ -73,6 +68,12 @@ const Contacts: NextPage = () => {
                                     <h5>{item.name}</h5>
                                 </Line>
                             ))}
+                            <Line>
+                                <div>
+                                    <FiPhone />
+                                </div>
+                                <h5>+44 07541 505 202</h5>
+                            </Line>
                         </List>
 
                         <Social>
@@ -114,11 +115,9 @@ const Margin = styled.div`
     max-width: 1000px;
     width: 100%;
     margin: 0px auto;
-    margin-top: 7vh;
 `;
 
 const Outline = styled.div`
-    // margin: 75px;
     padding: calc(25px + 2.5vw) 0px;
 
     outline: 1px solid hsl(340, 100%, 50%);
@@ -148,7 +147,7 @@ const Text = styled.div`
     }
 
     p {
-        padding: 0px 0px 25px 50px;
+        padding: 0px 0px 25px 30px;
         font-size: 0.8em;
         max-width: 450px;
     }
@@ -199,7 +198,7 @@ const BoxI = styled.div`
 `;
 
 const ServImg = styled.img`
-    width: 110%;
+    width: 120%;
     height: 70%;
     transform: translateX(-10%);
 

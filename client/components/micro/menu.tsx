@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { animated, useSpring, useTrail, config } from "react-spring";
@@ -9,12 +9,37 @@ import { navAction } from "../../store/actions/navActions";
 
 import { below } from "../../styles/breakpoints";
 
+const useOutsideAlerter = (ref: React.RefObject<HTMLElement>) => {
+    const dispatch = useDispatch();
+
+    const { NavOn } = useSelector((state: AppState) => state.nav);
+    useEffect(() => {
+        const handleClickOutside = (event: any) => {
+            if (ref.current && !ref.current.contains(event.target)) {
+                if (NavOn) {
+                    dispatch(navAction());
+                }
+            }
+        };
+        // Bind the event listener
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            // Unbind the event listener on clean up
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [ref, NavOn]);
+};
+
 const Menu = () => {
     const dispatch = useDispatch();
     const { NavOn } = useSelector((state: AppState) => state.nav);
     const toggleNav = () => {
         dispatch(navAction());
     };
+
+    const wrapperRef = useRef(null);
+
+    useOutsideAlerter(wrapperRef);
 
     const menuIt = [
         {
@@ -30,15 +55,15 @@ const Menu = () => {
             target: undefined,
         },
         {
-            name: "CONTACT",
-            color: "hsla(263, 12%, 20%, 0.8)",
-            path: "/contact",
+            name: "ABOUT",
+            color: "hsla(263, 12%, 10%, 0.8)",
+            path: "/skillset",
             target: undefined,
         },
         {
-            name: "SKILLS",
-            color: "hsla(263, 12%, 10%, 0.8)",
-            path: "/skillset",
+            name: "CONTACT",
+            color: "hsla(263, 12%, 20%, 0.8)",
+            path: "/contact",
             target: undefined,
         },
         {
@@ -70,7 +95,7 @@ const Menu = () => {
     });
 
     return (
-        <MenuST>
+        <MenuST ref={wrapperRef}>
             {trail.map(({ x, ...otherProps }, i) => (
                 <MenuItem
                     key={i}

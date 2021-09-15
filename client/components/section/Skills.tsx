@@ -245,12 +245,12 @@ export default Skillset;
 
 const Section = styled(animated.section)`
     position: relative;
+
     width: 100vw;
     height: 100%;
     min-height: 500px;
 
     overflow: hidden;
-    background-color: hsla(263, 0%, 95%, 1);
 
     :after {
         position: absolute;
@@ -261,16 +261,12 @@ const Section = styled(animated.section)`
         width: 1px;
         background: hsl(340, 100%, 50%);
     }
-
-    display: flex;
-    justify-content: start;
-    align-items: center;
 `;
 
 const Margin = styled.div`
     max-width: 1000px;
     width: 100%;
-    margin: 0px auto;
+    margin: 100px auto;
 
     // border: 1px solid black;
 `;
@@ -288,7 +284,7 @@ const Writes = styled(animated.div)`
     }
 
     border: 1px solid hsla(340, 80%, 50%, 1);
-    background-color: hsla(263, 0%, 95%, 1);
+    background-color: hsla(263, 0%, 100%, 1);
 `;
 
 const Name = styled.div`
@@ -297,7 +293,7 @@ const Name = styled.div`
     padding: 0px 30px;
 
     transform: translateY(-50%);
-    background: hsla(263, 0%, 95%, 1);
+    background: hsla(263, 0%, 100%, 1);
 
     h2 {
         font-size: clamp(2em, 4vw, 6em);
@@ -320,6 +316,7 @@ const Skill = styled(animated.div)`
     display: flex;
     justify-content: start;
     align-items: center;
+    font-size: clamp(0.7em, 1.5vw, 3em);
 
     // border: 1px solid blue;
 `;
@@ -355,7 +352,7 @@ const Type = styled.div`
 
         text-align: center;
         color: black;
-        background: hsla(263, 0%, 95%, 1);
+        background: hsla(263, 0%, 100%, 1);
         border: 1px solid hsla(340, 80%, 50%, 1);
 
         display: flex;

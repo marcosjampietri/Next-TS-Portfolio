@@ -17,117 +17,6 @@ type Props = {
 };
 
 const Skills = ({ data }: Props) => {
-    const backSkills = [
-        {
-            typ: "BACK",
-            def: "Stripe customised payment form with server integration",
-            icon: "stp",
-            color: "",
-        },
-        {
-            typ: "BACK",
-            def: "JWT user authentication system with encrypted data saving",
-            icon: "jwt",
-            color: "",
-        },
-        {
-            typ: "BACK",
-            def: "Robust Validation and user input",
-            icon: "unr",
-            color: "",
-        },
-        {
-            typ: "BACK",
-            def: "MongoDB operations and query system with mongoose",
-            icon: "mdb",
-            color: "",
-        },
-    ];
-
-    const devSkills = [
-        {
-            typ: "DEVOPS",
-            def: "Multi-Cloud: Project built on multiple cloud services and integration with AWS and Digital Ocean",
-            icon: "dto",
-            color: "",
-        },
-        {
-            typ: "DEVOPS",
-            def: "Linux virtual machines provisioning of instances with Ansible running on remote server",
-            icon: "anb",
-            color: "",
-        },
-        {
-            typ: "DEVOPS",
-            def: "Infrastructure creation and management via Code with Terraform",
-            icon: "tfm",
-            color: "",
-        },
-        {
-            typ: "DEVOPS",
-            def: "IAM User and Permission configurations",
-            icon: "cst",
-            color: "",
-        },
-        {
-            typ: "DEVOPS",
-            def: "EC2 and Elastic Beanstalk Instance setup for Node, Docker and Python Applications",
-            icon: "aws",
-            color: "",
-        },
-        {
-            typ: "DEVOPS",
-            def: "Docker, Dockerhub, Dockerfile",
-            icon: "dkr",
-            color: "",
-        },
-        {
-            typ: "DEVOPS",
-            def: "Jenkins, groovy script",
-            icon: "jks",
-            color: "",
-        },
-    ];
-
-    const genSkills = [
-        {
-            typ: "GENERAL",
-            def: "MAC OS",
-            icon: "mac",
-            color: "",
-        },
-        {
-            typ: "GENERAL",
-            def: "NPM, node and Dependencies management",
-            icon: "npm",
-            color: "",
-        },
-        {
-            typ: "GENERAL",
-            def: "AWS CLI and Excellent knowledge of Command Lines",
-            icon: "aws",
-            color: "",
-        },
-        {
-            typ: "GENERAL",
-            def: "Vim Editor",
-            icon: "lnx",
-            color: "",
-        },
-        {
-            typ: "GENERAL",
-            def: "AWS CLI and Excellent knowledge of Command Lines",
-            icon: "aws2",
-            color: "",
-        },
-        {
-            typ: "GENERAL",
-            def: "Ubuntu/Linux Machine Setup / Installations and files and folder structure",
-            icon: "ubn",
-            color: "",
-        },
-    ];
-
     const { activeSkill, index } = useSelector((state: AppState) => state.filt);
 
     const [trail, api] = useTrail(data.length, (i) => ({
@@ -211,6 +100,128 @@ export const Skill1 = () => {
     return <Skills data={frontSkills} />;
 };
 
+export const Skill2 = () => {
+    const backSkills = [
+        {
+            typ: "BACK",
+            def: "Stripe customised payment form with server integration",
+            icon: "stp",
+            color: "",
+        },
+        {
+            typ: "BACK",
+            def: "JWT user authentication system with encrypted data saving",
+            icon: "jwt",
+            color: "",
+        },
+        {
+            typ: "BACK",
+            def: "Robust Validation and user input",
+            icon: "unr",
+            color: "",
+        },
+        {
+            typ: "BACK",
+            def: "MongoDB operations and query system with mongoose",
+            icon: "mdb",
+            color: "",
+        },
+    ];
+
+    return <Skills data={backSkills} />;
+};
+
+export const Skill3 = () => {
+    const devSkills = [
+        {
+            typ: "DEVOPS",
+            def: "Multi-Cloud: Project built on multiple cloud services and integration with AWS and Digital Ocean",
+            icon: "dto",
+            color: "",
+        },
+        {
+            typ: "DEVOPS",
+            def: "Linux virtual machines provisioning of instances with Ansible running on remote server",
+            icon: "anb",
+            color: "",
+        },
+        {
+            typ: "DEVOPS",
+            def: "Infrastructure creation and management via Code with Terraform",
+            icon: "tfm",
+            color: "",
+        },
+        {
+            typ: "DEVOPS",
+            def: "IAM User and Permission configurations",
+            icon: "cst",
+            color: "",
+        },
+        {
+            typ: "DEVOPS",
+            def: "EC2 and Elastic Beanstalk Instance setup for Node, Docker and Python Applications",
+            icon: "aws",
+            color: "",
+        },
+        {
+            typ: "DEVOPS",
+            def: "Docker, Dockerhub, Dockerfile",
+            icon: "dkr",
+            color: "",
+        },
+        {
+            typ: "DEVOPS",
+            def: "Jenkins, groovy script",
+            icon: "jks",
+            color: "",
+        },
+    ];
+
+    return <Skills data={devSkills} />;
+};
+export const Skill4 = () => {
+    const genSkills = [
+        {
+            typ: "GENERAL",
+            def: "MAC OS",
+            icon: "mac",
+            color: "",
+        },
+        {
+            typ: "GENERAL",
+            def: "NPM, node and Dependencies management",
+            icon: "npm",
+            color: "",
+        },
+        {
+            typ: "GENERAL",
+            def: "AWS CLI and Excellent knowledge of Command Lines",
+            icon: "aws",
+            color: "",
+        },
+        {
+            typ: "GENERAL",
+            def: "Vim Editor",
+            icon: "lnx",
+            color: "",
+        },
+        {
+            typ: "GENERAL",
+            def: "AWS CLI and Excellent knowledge of Command Lines",
+            icon: "aws2",
+            color: "",
+        },
+        {
+            typ: "GENERAL",
+            def: "Ubuntu/Linux Machine Setup / Installations and files and folder structure",
+            icon: "ubn",
+            color: "",
+        },
+    ];
+
+    return <Skills data={genSkills} />;
+};
+
 const SklList = styled(animated.ul)`
     width: 100%;
     height: 100%;
@@ -232,7 +243,7 @@ const SklList = styled(animated.ul)`
 
 const Skill = styled(animated.li)`
     height: 35px;
-    font-size: clamp(0.5em, 1.5vw, 3em);
+    font-size: clamp(0.7em, 1.5vw, 3em);
     font-weight: 500;
     margin: 0.8em 0px;
 

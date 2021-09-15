@@ -9,7 +9,7 @@ const Skills: NextPage = () => {
         <Layout>
             <Page>
                 <Wrap>
-                    <TH1>SKILLS</TH1>
+                    <TH1>ABOUT</TH1>
                 </Wrap>
                 <Skillset />
             </Page>
@@ -31,6 +31,7 @@ const Wrap = styled.div`
 
 const TH1 = styled.h1`
     margin: 0px 0px 0px;
+
     padding: 100px 20px 30px;
     font-size: clamp(1.2em, 7vw, 5em);
 

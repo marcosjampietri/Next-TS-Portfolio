@@ -8,7 +8,7 @@ import {
     toastONAction,
     toastOFFAction,
 } from "../../store/actions/toastActions";
-import { Skill1 } from "../toast/sklToast";
+import { Skill1, Skill2, Skill3, Skill4 } from "../toast/sklToast";
 import styled from "styled-components";
 
 type Props = {
@@ -18,6 +18,7 @@ type Props = {
         catg: string;
         desc: string;
         tech: string;
+        usedskl: JSX.Element;
     }[];
 };
 
@@ -33,7 +34,7 @@ const CasesAll = ({ data }: Props) => {
     const { ToastOn } = useSelector((state: AppState) => state.toast);
 
     const toggleToast = () => {
-        dispatch(toastONAction(<Skill1 />));
+        dispatch(toastONAction(data[0].usedskl));
     };
 
     if (ToastOn) {
@@ -104,10 +105,10 @@ const CasesAll = ({ data }: Props) => {
                     item ? (
                         <Description style={styles}>
                             <TTL> {data[0].name} </TTL>
-                            <Line />
                         </Description>
                     ) : null
                 )}
+                <Line />
                 {pgRight((styles, item) =>
                     item ? (
                         <Flex style={styles}>
@@ -146,6 +147,7 @@ export const Case1 = () => {
             catg: "Web Design",
             desc: "this case was very nice",
             tech: "Next.js, React, Redux",
+            usedskl: <Skill1 />,
         },
     ];
 
@@ -160,6 +162,7 @@ export const Case2 = () => {
             catg: "DevOps",
             desc: "this case was very nice",
             tech: "Typescript, MongoDB, Docker, Jenkins, Terraform, Ansible, AWS, Digital Ocean",
+            usedskl: <Skill2 />,
         },
     ];
 
@@ -174,6 +177,7 @@ export const Case3 = () => {
             catg: "Back-End",
             desc: "this case was very nice",
             tech: "Typescript, MongoDB, Docker, AWS, Digital Ocean",
+            usedskl: <Skill3 />,
         },
     ];
 
@@ -185,7 +189,7 @@ const Section = styled.section`
     width: 100vw;
     height: 100%;
 
-    overflow: hidden;
+    overflowx: hidden;
 
     :after {
         position: absolute;
@@ -220,6 +224,7 @@ const Flex = styled(animated.div)`
 `;
 
 const TTL = styled(animated.h1)`
+    height: 2em;
     color: black;
     font-size: clamp(1em, 5vw, 3em);
     font-weight: 700;
@@ -248,17 +253,19 @@ const TH2 = styled(animated.h2)`
 `;
 
 const BTNskl = styled(animated.button)`
-    width: 70px;
-    height: 70px;
-    font-size: 50px;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
     font-weight: 300;
     margin: 10px;
     padding: 10px;
 
+    border: 1px solid hsla(0, 0%, 0%, 0.5);
     border-radius: 50%;
     background-color: purple;
     color: white;
     cursor: pointer;
+    box-shadow: 0px 0px 8px black;
 `;
 
 const Pair = styled(animated.div)`
