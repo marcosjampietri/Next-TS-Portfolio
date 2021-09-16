@@ -56,13 +56,13 @@ const Menu = () => {
         },
         {
             name: "ABOUT",
-            color: "hsla(263, 12%, 10%, 0.8)",
-            path: "/skillset",
+            color: "hsla(263, 12%, 20%, 0.8)",
+            path: "/about",
             target: undefined,
         },
         {
             name: "CONTACT",
-            color: "hsla(263, 12%, 20%, 0.8)",
+            color: "hsla(263, 12%, 10%, 0.8)",
             path: "/contact",
             target: undefined,
         },

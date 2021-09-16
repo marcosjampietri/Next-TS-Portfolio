@@ -11,7 +11,7 @@ const Hero = () => {
         "DEVOPS ENGINEER",
         "REACT DEVELOPER",
         "UX/UI DESIGNER",
-        "BACK-END DIRTY JOBS",
+        "BACK-END BUILDER",
     ];
 
     const [index, set] = useState(0);
@@ -239,7 +239,7 @@ const Role = styled.div`
     margin: 20px auto;
 
     h2 {
-        font-size: clamp(1em, 3vw, 4em);
+        font-size: clamp(1.5em, 2.5vw, 2.5em);
         font-weight: 900;
         text-shadow: 0px 0px 10px white;
     }
@@ -262,4 +262,5 @@ const Button = styled.button`
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: 600;
 `;

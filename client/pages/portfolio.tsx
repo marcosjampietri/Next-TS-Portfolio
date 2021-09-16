@@ -52,24 +52,26 @@ const Works: NextPage = () => {
                 <Toast>{toastComponent}</Toast>
                 <TH1>PORTFOLIO</TH1>
                 <Controls>
-                    <ButtonP
-                        onClick={() => {
-                            prev();
-                            setDisable(true);
-                        }}
-                        disabled={disable}
-                    >
-                        <GrPrevious />
-                    </ButtonP>
-                    <ButtonN
-                        onClick={() => {
-                            next();
-                            setDisable(true);
-                        }}
-                        disabled={disable}
-                    >
-                        <GrNext />
-                    </ButtonN>
+                    <div>
+                        <ButtonP
+                            onClick={() => {
+                                prev();
+                                setDisable(true);
+                            }}
+                            disabled={disable}
+                        >
+                            <GrPrevious />
+                        </ButtonP>
+                        <ButtonN
+                            onClick={() => {
+                                next();
+                                setDisable(true);
+                            }}
+                            disabled={disable}
+                        >
+                            <GrNext />
+                        </ButtonN>
+                    </div>
                 </Controls>
                 {transitions((style, i) => (
                     <CaseWrap style={style} key={index}>
@@ -118,15 +120,19 @@ const CaseWrap = styled(animated.div)`
 const Controls = styled.div`
     position: fixed;
     top: 50vh;
-    width: 100%;
-    pointer-events: none;
-
+    width: 100vw;
     height: 70px;
-    margin: 0 auto;
+
     z-index: 100;
 
-    display: flex;
-    justify-content: space-between;
+    div {
+        max-width: 1144px;
+        margin: 0 auto;
+        pointer-events: none;
+
+        display: flex;
+        justify-content: space-between;
+    }
 `;
 
 const Button = styled(animated.button)`

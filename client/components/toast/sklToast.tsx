@@ -60,6 +60,12 @@ export const Skill1 = () => {
             color: "",
         },
         {
+            typ: "GENERAL",
+            def: "Branding and Logo Design",
+            icon: "MJ(LOGO)",
+            color: "",
+        },
+        {
             typ: "FRONT",
             def: "Fluid Responsiveness without Bootstrap/Tailwind/Material UI",
             icon: "brn",
@@ -74,7 +80,7 @@ export const Skill1 = () => {
         {
             typ: "FRONT",
             def: "Smooth and organic animations using React-Spring",
-            icon: "skt",
+            icon: "spn",
             color: "",
         },
         {
@@ -85,13 +91,7 @@ export const Skill1 = () => {
         },
         {
             typ: "FRONT",
-            def: "Use of persistent data with Local Storage",
-            icon: "dkr",
-            color: "",
-        },
-        {
-            typ: "FRONT",
-            def: "Flipping cards, Scroll Effects, Parallax, Carousel, Neo-Morphism, 3D Elements, Modal Elements, Page Transitions, KeyFrames ",
+            def: "Flipping cards, Scroll Effects, Carousel, 3D Elements, Modal Elements, Page Transitions, KeyFrames ",
             icon: "css",
             color: "",
         },
@@ -100,7 +100,7 @@ export const Skill1 = () => {
     return <Skills data={frontSkills} />;
 };
 
-export const Skill2 = () => {
+export const Skill3 = () => {
     const backSkills = [
         {
             typ: "BACK",
@@ -131,7 +131,7 @@ export const Skill2 = () => {
     return <Skills data={backSkills} />;
 };
 
-export const Skill3 = () => {
+export const Skill2 = () => {
     const devSkills = [
         {
             typ: "DEVOPS",
@@ -165,13 +165,13 @@ export const Skill3 = () => {
         },
         {
             typ: "DEVOPS",
-            def: "Docker, Dockerhub, Dockerfile",
+            def: "Great use of Docker, Dockerhub, Dockerfile",
             icon: "dkr",
             color: "",
         },
         {
             typ: "DEVOPS",
-            def: "Jenkins, groovy script",
+            def: "Setup of Jenkins app on server and groovy script code",
             icon: "jks",
             color: "",
         },
