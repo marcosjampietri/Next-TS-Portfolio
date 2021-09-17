@@ -5,7 +5,7 @@ import { animated, useSpring, useTrail, config } from "react-spring";
 import styled from "styled-components";
 
 import { AppState } from "../../store/reducers/rootReducer";
-import { navAction } from "../../store/actions/navActions";
+import { navOffAction } from "../../store/actions/navActions";
 
 import { below } from "../../styles/breakpoints";
 
@@ -14,28 +14,24 @@ const useOutsideAlerter = (ref: React.RefObject<HTMLElement>) => {
 
     const { NavOn } = useSelector((state: AppState) => state.nav);
     useEffect(() => {
-        const handleClickOutside = (event: any) => {
-            if (ref.current && !ref.current.contains(event.target)) {
-                if (NavOn) {
-                    dispatch(navAction());
+        if (NavOn) {
+            const handleClickOutside = (event: any) => {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    dispatch(navOffAction());
                 }
-            }
-        };
-        // Bind the event listener
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            // Unbind the event listener on clean up
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
+            };
+            // Bind the event listener
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                // Unbind the event listener on clean up
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }
     }, [ref, NavOn]);
 };
 
 const Menu = () => {
-    const dispatch = useDispatch();
     const { NavOn } = useSelector((state: AppState) => state.nav);
-    const toggleNav = () => {
-        dispatch(navAction());
-    };
 
     const wrapperRef = useRef(null);
 

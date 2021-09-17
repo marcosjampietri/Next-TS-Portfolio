@@ -6,3 +6,8 @@ export const navAction: actionCreator<any> =
             type: "TOGGLE_NAV",
         });
     };
+
+export const navOffAction = () => ({
+    type: "TOGGLE_NAV_OFF",
+
+});

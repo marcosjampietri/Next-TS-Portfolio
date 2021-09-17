@@ -11,6 +11,11 @@ export const navReducer = (state: navState = initState, action: any) => {
                 ...state,
                 NavOn: !state.NavOn,
             };
+        case "TOGGLE_NAV_OFF":
+            return {
+                ...state,
+                NavOn: false,
+            };
         default:
             return {
                 ...state,

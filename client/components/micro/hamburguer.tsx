@@ -4,7 +4,7 @@ import { animated, useSpring } from "react-spring";
 import styled from "styled-components";
 
 import { AppState } from "../../store/reducers/rootReducer";
-import { navAction } from "../../store/actions/navActions";
+import { navAction, navOffAction } from "../../store/actions/navActions";
 
 const Burger = () => {
     const dispatch = useDispatch();
@@ -13,7 +13,11 @@ const Burger = () => {
 
     //dispatch buttons
     const toggleNav = () => {
-        dispatch(navAction());
+        if (NavOn) {
+            dispatch(navOffAction());
+        } else {
+            dispatch(navAction());
+        }
     };
 
     useEffect(() => {
@@ -52,17 +56,24 @@ const Burger = () => {
     });
 
     return (
-        <Box onClick={toggleNav} style={bg}>
-            <Lines>
-                <OneLine style={first} />
-                <OneLine style={second} />
-                <OneLine style={third} />
-            </Lines>
-        </Box>
+        <Wrap>
+            {NavOn ? <BoxX></BoxX> : null}
+            <Box onClick={toggleNav} style={bg}>
+                <Lines>
+                    <OneLine style={first} />
+                    <OneLine style={second} />
+                    <OneLine style={third} />
+                </Lines>
+            </Box>
+        </Wrap>
     );
 };
 
 export default Burger;
+
+const Wrap = styled.div`
+    position: relative;
+`;
 
 const Box = styled(animated.div)`
     position: relative;
@@ -81,6 +92,12 @@ const Box = styled(animated.div)`
         }
     }
 `;
+
+const BoxX = styled(Box)`
+    position: absolute;
+    z-index: 99999999999999;
+`;
+
 const Lines = styled.svg`
     position: absolute;
     top: 0;
