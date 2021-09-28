@@ -37,7 +37,7 @@ const Hero = () => {
 
     useEffect(() => {
         setMount(true);
-    }, [mount]);
+    }, []);
 
     const revUP = useTransition(mount, {
         from: {

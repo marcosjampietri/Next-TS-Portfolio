@@ -19,6 +19,10 @@ export interface filterState {
     activeSkill: string;
     index: number;
 }
+export interface casesState {
+
+    caseIndex: number;
+}
 
 export interface navActionTP {
     obj: { type: "TOGGLE_NAV" };
@@ -37,6 +41,7 @@ export interface storeType {
     toastState: toastState;
     loadState: loadState;
     filterState: filterState;
+    casesState: casesState;
 
 }
 

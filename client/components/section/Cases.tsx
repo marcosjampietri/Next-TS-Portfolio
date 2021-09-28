@@ -1,188 +1,226 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import Link from "next/link";
 import { animated, useTransition, config } from "react-spring";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { RiPlayMiniLine } from "react-icons/ri";
-import { AppState } from "../../store/reducers/rootReducer";
-import {
-    toastONAction,
-    toastOFFAction,
-} from "../../store/actions/toastActions";
+import { prevAction, nextAction } from "../../store/actions/casesActions";
+
+import { GrNext, GrPrevious } from "react-icons/gr";
+
+import { AppState, useTypedSelector } from "../../store/reducers/rootReducer";
+import { toastONAction } from "../../store/actions/toastActions";
 import { Skill1, Skill2, Skill3, Skill4 } from "../toast/sklToast";
 import styled from "styled-components";
 
-type Props = {
-    data: {
-        name: string;
-        image: string;
-        catg: string;
-        desc: string;
-        tech: string;
-        usedskl: JSX.Element;
-    }[];
-};
+const CasesAll = () => {
+    const { caseIndex } = useTypedSelector((state: AppState) => state.cases);
 
-const CasesAll = ({ data }: Props) => {
-    const [mount, setMount] = useState(false);
-
-    useEffect(() => {
-        setMount(true);
-    }, [mount]);
+    const cases = [
+        {
+            name: "SUPER SECRET CODE GAME",
+            id: 1,
+            update: "27/09/2021",
+            client: "EduMe",
+            image: "/Pics/SSC-Game.jpg",
+            catg: "Software Development, DevOps",
+            desc: "this case was very nice",
+            tech: "Next.js, Typescript, Redux, AWS",
+            path: "http://35.178.244.70:5150/",
+            usedskl: <Skill4 />,
+        },
+        {
+            name: "PROFESSIONAL PHOTGRAPHER WEBSITE",
+            id: 2,
+            update: "01/07/2021",
+            client: "Andrea Mangiacavallo",
+            image: "/Pics/andrea.jpg",
+            catg: "Web Design",
+            desc: "this case was very nice",
+            tech: "Next.js, React, Redux",
+            path: "https://andreamangiacavallo.com/",
+            usedskl: <Skill1 />,
+        },
+        {
+            name: "DEVOPS APP INTEGRATION",
+            id: 3,
+            update: "27/09/2021",
+            client: "Self-Employed",
+            image: "/Pics/devO.jpg",
+            catg: "DevOps",
+            desc: "this case was very nice",
+            tech: "Typescript, MongoDB, Docker, Jenkins, Terraform, Ansible, AWS, Digital Ocean",
+            path: "http://35.178.244.70:5150/",
+            usedskl: <Skill2 />,
+        },
+        {
+            name: "E-LEARNING PLATFORM",
+            id: 4,
+            update: "12/03/2020",
+            client: "Lord Music Academy",
+            image: "/Pics/lmaWS.jpg",
+            catg: "Back-End",
+            desc: "this case was very nice",
+            tech: "Typescript, MongoDB, Docker, AWS, Digital Ocean",
+            path: "https://lordmusicacademy.com/?lang=en&noredirect=true",
+            usedskl: <Skill3 />,
+        },
+    ];
 
     const dispatch = useDispatch();
 
-    const { ToastOn } = useSelector((state: AppState) => state.toast);
-
-    const toggleToast = () => {
-        dispatch(toastONAction(data[0].usedskl));
-    };
-
-    if (ToastOn) {
-        setTimeout(() => {
-            toastOFFAction();
-        }, 10000);
+    {
+        /* const { ToastOn } = useSelector((state: AppState) => state.toast); */
     }
 
-    const pgRight = useTransition(mount, {
+    const toggleToast = () => {
+        dispatch(toastONAction(cases[caseIndex].usedskl));
+    };
+
+    const revDOWN = useTransition(cases[caseIndex], {
+        key: (item: any) => item.id,
         from: {
-            transform: "translate3d(30vw,0vh,0) rotateY(15deg)",
+            transform: "translate3d(0vw,-20vh,0)",
             opacity: 0,
         },
         enter: {
-            transform: "translate3d(0,0vh,0) rotateY(0deg)",
-            transformStyle: "preserve-3d",
+            transform: "translate3d(0vw,0vh,0)",
             opacity: 1,
         },
         leave: {
-            transform: "translate3d(30,0vh,0) rotateY(0deg)",
-            transformStyle: "preserve-3d",
+            transform: "translate3d(-50vw,0vh,0)",
             opacity: 0,
         },
-        reverse: mount,
-        delay: 1200,
+
+        config: config.slow,
+    });
+
+    const revDOWN2 = useTransition(cases[caseIndex], {
+        key: (item: any) => item.id,
+        from: {
+            transform: "translate3d(20vw,0vh,0)",
+            opacity: 0,
+        },
+        enter: {
+            transform: "translate3d(0,0vh,0)",
+            opacity: 1,
+        },
+        leave: {
+            transform: "translate3d(0,50vh,0)",
+            opacity: 0,
+        },
+        delay: 300,
+        config: config.molasses,
+    });
+    const revDOWN3 = useTransition(cases[caseIndex], {
+        key: (item: any) => item.id,
+        from: {
+            transform: "translate3d(0vw,0vh,0) rotateX(90deg)",
+            opacity: 0,
+        },
+        enter: {
+            transform: "translate3d(0,0vh,0) rotateX(0deg)",
+            opacity: 1,
+        },
+        leave: {
+            transform: "translate3d(0,0vh,0) rotateX(-90deg)",
+            opacity: 0,
+        },
+        delay: 80,
         config: config.molasses,
     });
 
-    const revUP = useTransition(mount, {
-        from: {
-            transform: "translate3d(0vw,10vh,0)",
-            opacity: 0,
-        },
-        enter: {
-            transform: "translate3d(0,0vh,0)",
-            opacity: 1,
-        },
-        leave: {
-            transform: "translate3d(0,10vh,0)",
-            opacity: 0,
-        },
-        reverse: mount,
-        delay: 700,
-        config: config.molasses,
-    });
-    const revDOWN = useTransition(mount, {
-        from: {
-            transform: "translate3d(0vw,-10vh,0)",
-            opacity: 0,
-        },
-        enter: {
-            transform: "translate3d(0,0vh,0)",
-            opacity: 1,
-        },
-        leave: {
-            transform: "translate3d(0,-10vh,0)",
-            opacity: 0,
-        },
-        reverse: mount,
-        delay: 200,
-        config: config.molasses,
-    });
+    const [disable, setDisable] = useState(false);
+
+    const prev = () => {
+        if (caseIndex > 0) {
+            dispatch(prevAction());
+        }
+    };
+    const next = () => {
+        dispatch(nextAction());
+    };
+
+    if (disable == true) {
+        setTimeout(setDisable, 1200);
+    }
+
+    console.log(caseIndex);
 
     return (
         <Section>
+            <Controls>
+                <div>
+                    <ButtonP
+                        onClick={() => {
+                            prev();
+                            setDisable(true);
+                        }}
+                        disabled={disable}
+                    >
+                        <GrPrevious />
+                    </ButtonP>
+                    <ButtonN
+                        onClick={() => {
+                            next();
+                            setDisable(true);
+                        }}
+                        disabled={disable}
+                    >
+                        <GrNext />
+                    </ButtonN>
+                </div>
+            </Controls>
             <Margin>
-                {revDOWN((styles, item) =>
-                    item ? (
-                        <Description style={styles}>
-                            <TTL> {data[0].name} </TTL>
-                        </Description>
-                    ) : null
-                )}
+                <Name>
+                    {revDOWN(
+                        (styles, item) =>
+                            item && (
+                                <TTL key={item.id} style={styles}>
+                                    {item.name}
+                                </TTL>
+                            )
+                    )}
+                </Name>
                 <Line />
-                {pgRight((styles, item) =>
-                    item ? (
-                        <Flex style={styles}>
-                            <Pair>
-                                <TH2B>CATEGORIES:</TH2B>
-                                <TH2>{data[0].catg}</TH2>
-                            </Pair>
-                            <Pair>
-                                <TH2B>TECHNOLOGIES:</TH2B>
-                                <TH2>{data[0].tech}</TH2>
-                            </Pair>
-                            <Pair>
-                                <TH2B>SKILLS APPLIED:</TH2B>
-                                <BTNskl onClick={toggleToast}>
-                                    <RiPlayMiniLine />
-                                </BTNskl>
-                            </Pair>
-                        </Flex>
-                    ) : null
-                )}
-                {revUP((styles, item) =>
-                    item ? (
-                        <Image src={data[0].image} style={styles}></Image>
-                    ) : null
+                <Details>
+                    <Grid1>
+                        <TH2B>CATEGORIES:</TH2B>
+                        <TH2B>TECHNOLOGIES:</TH2B>
+                        <TH2B>SKILLS APPLIED:</TH2B>
+                        <TH2B>LAST UPDATED:</TH2B>
+                        <TH2B>CLIENT:</TH2B>
+                    </Grid1>
+                    {revDOWN2(
+                        (styles, item) =>
+                            item && (
+                                <Grid2 key={item.id} style={styles}>
+                                    <TH2>{item.catg}</TH2>
+                                    <TH2>{item.tech}</TH2>
+                                    <BTNskl onClick={toggleToast}>SHOW</BTNskl>
+                                    <TH2>{item.update}</TH2>
+                                    <TH2>{item.client}</TH2>
+                                </Grid2>
+                            )
+                    )}
+                </Details>
+                {revDOWN3(
+                    (styles, item) =>
+                        item && (
+                            <Image key={item.id} style={styles}>
+                                <Link href={item.path}>
+                                    <a target="_blank" rel="noreferrer">
+                                        <img src={item.image}></img>
+                                    </a>
+                                </Link>
+                            </Image>
+                        )
                 )}
             </Margin>
         </Section>
     );
 };
 
-export const Case1 = () => {
-    const case1Data = [
-        {
-            name: "ANDREA MANGIACAVALLO'S WEBSITE",
-            image: "/Pics/andrea.jpg",
-            catg: "Web Design",
-            desc: "this case was very nice",
-            tech: "Next.js, React, Redux",
-            usedskl: <Skill1 />,
-        },
-    ];
-
-    return <CasesAll data={case1Data} />;
-};
-
-export const Case2 = () => {
-    const case1Data = [
-        {
-            name: "DEVOPS APP INTEGRATION",
-            image: "/Pics/devO.jpg",
-            catg: "DevOps",
-            desc: "this case was very nice",
-            tech: "Typescript, MongoDB, Docker, Jenkins, Terraform, Ansible, AWS, Digital Ocean",
-            usedskl: <Skill2 />,
-        },
-    ];
-
-    return <CasesAll data={case1Data} />;
-};
-
-export const Case3 = () => {
-    const case1Data = [
-        {
-            name: "LORD MUSIC ACADEMY E-LEARNING PLATFORM",
-            image: "/Pics/lmaWS.jpg",
-            catg: "Back-End",
-            desc: "this case was very nice",
-            tech: "Typescript, MongoDB, Docker, AWS, Digital Ocean",
-            usedskl: <Skill3 />,
-        },
-    ];
-
-    return <CasesAll data={case1Data} />;
-};
+export default CasesAll;
 
 const Section = styled.section`
     position: relative;
@@ -190,16 +228,6 @@ const Section = styled.section`
     height: 100%;
 
     overflowx: hidden;
-
-    :after {
-        position: absolute;
-        bottom: 0px;
-        left: 50vw;
-        content: "";
-        height: 25vh;
-        width: 1px;
-        background: hsl(340, 100%, 50%);
-    }
 `;
 
 const Margin = styled.div`
@@ -216,14 +244,17 @@ const Margin = styled.div`
     }
 `;
 
-const Description = styled(animated.div)``;
+const Name = styled(animated.div)`
+    display: grid;
+    height: 15vh;
 
-const Flex = styled(animated.div)`
-    display: flex: 
-    // flex-direction: column;
+    overflow: hidden;
 `;
 
 const TTL = styled(animated.h1)`
+    grid-column: 1;
+    grid-row: 1;
+
     height: 2em;
     color: black;
     font-size: clamp(1em, 5vw, 3em);
@@ -231,59 +262,118 @@ const TTL = styled(animated.h1)`
     margin: 50px 10px 10px 10px;
 `;
 
+const Details = styled(animated.div)`
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+
+    margin: 20px 0px;
+`;
+const Grid = styled(animated.div)`
+    display: grid;
+
+    grid-template-rows: repeat(5, 50px);
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: start;
+`;
+const Grid1 = styled(Grid)`
+    grid-column: 1;
+`;
+const Grid2 = styled(Grid)`
+    grid-column: 2;
+    grid-row: 1;
+`;
+
 const Line = styled.div`
     width: 80%;
     height: 1px;
-    margin: 20px 10px 40px;
+    margin: 1.5vh 10px 3vh;
     background: red;
 `;
 
-const TH2B = styled(animated.h2)`
-    color: black;
-    font-size: clamp(0.6em, 1.5vw, 2em);
-    font-weight: 700;
+const TH = styled.div`
+    font-size: clamp(0.8em, 2vw, 1.8em);
+
     margin: 10px;
+    padding: 10px 0px;
+
+    color: black;
 `;
 
-const TH2 = styled(animated.h2)`
-    color: black;
-    font-size: clamp(0.8em, 2vw, 2em);
+const TH2B = styled(TH)`
+    font-weight: 700;
+    letter-spacing: -0.05em;
+`;
+
+const TH2 = styled(TH)`
     font-weight: 300;
     margin: 10px;
 `;
 
 const BTNskl = styled(animated.button)`
-    width: 50px;
-    height: 50px;
-    font-size: 30px;
+    max-width: 200px;
+    height: 35px;
+    font-size: 22px;
     font-weight: 300;
     margin: 10px;
-    padding: 10px;
+    padding: 6px 10px;
 
-    border: 1px solid hsla(0, 0%, 0%, 0.5);
-    border-radius: 50%;
-    background-color: purple;
+    border-radius: 5px;
+    border: none;
+    background-color: hsla(340, 100%, 50%, 1);
     color: white;
     cursor: pointer;
-    box-shadow: 0px 0px 8px black;
+    box-shadow: 5px 5px 8px hsla(0, 0%, 0%, 0.51);
 `;
 
-const Pair = styled(animated.div)`
-    h3,
-    h4 {
-        color: black;
+const Image = styled(animated.div)`
+    a > img {
+        position: absolute;
+        width: 100%;
+        height: 45vh;
+
+        box-shadow: 2px 2px 20px black;
+
+        object-fit: cover;
+        object-position: center 0%;
     }
-
-    display: flex;
-    align-items: center;
 `;
 
-const Image = styled(animated.img)`
-    width: 100%;
-    height: 45vh;
-    margin: 30px 0px;
-    box-shadow: 2px 2px 20px black;
+const Controls = styled.div`
+    position: fixed;
+    top: 50vh;
+    width: 100vw;
+    height: 70px;
+    z-index: 100;
 
-    object-fit: cover;
-    object-position: 0% 20%;
+    pointer-events: none;
+
+    div {
+        max-width: 1144px;
+        margin: 0 auto;
+
+        display: flex;
+        justify-content: space-between;
+    }
+`;
+
+const Button = styled(animated.button)`
+    background: hsla(0, 10%, 25%, 0.2);
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    pointer-events: all;
+
+    border: none;
+    border-radius: 5px;
+    font-size: 2em;
+    svg {
+        fill: white;
+    }
+`;
+const ButtonN = styled(Button)`
+    right: 0px;
+`;
+const ButtonP = styled(Button)`
+    left: 0px;
 `;

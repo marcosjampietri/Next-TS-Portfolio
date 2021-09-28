@@ -1,18 +1,20 @@
 import React, { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Link from "next/link";
 import { animated, useSpring, useTrail, config } from "react-spring";
 import styled from "styled-components";
 
-import { AppState } from "../../store/reducers/rootReducer";
+import { AppState, useTypedSelector } from "../../store/reducers/rootReducer";
 import { navOffAction } from "../../store/actions/navActions";
 
-import { below } from "../../styles/breakpoints";
+{
+    /* import { below } from "../../styles/breakpoints"; */
+}
 
 const useOutsideAlerter = (ref: React.RefObject<HTMLElement>) => {
     const dispatch = useDispatch();
 
-    const { NavOn } = useSelector((state: AppState) => state.nav);
+    const { NavOn } = useTypedSelector((state: AppState) => state.nav);
     useEffect(() => {
         if (NavOn) {
             const handleClickOutside = (event: any) => {
@@ -31,7 +33,9 @@ const useOutsideAlerter = (ref: React.RefObject<HTMLElement>) => {
 };
 
 const Menu = () => {
-    const { NavOn } = useSelector((state: AppState) => state.nav);
+    const dispatch = useDispatch();
+
+    const { NavOn } = useTypedSelector((state: AppState) => state.nav);
 
     const wrapperRef = useRef(null);
 
@@ -91,7 +95,7 @@ const Menu = () => {
     });
 
     return (
-        <MenuST ref={wrapperRef}>
+        <MenuST ref={wrapperRef} onClick={() => dispatch(navOffAction())}>
             {trail.map(({ x, ...otherProps }, i) => (
                 <MenuItem
                     key={i}

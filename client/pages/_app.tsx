@@ -3,11 +3,11 @@ import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { PersistGate } from "redux-persist/integration/react";
 import { useStore } from "../store";
-import { Provider, useSelector, useDispatch } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import { Transition, animated, config } from "react-spring";
 import styled from "styled-components";
-import { navAction } from "../store/actions/navActions";
-import { AppState } from "../store/reducers/rootReducer";
+import { navAction, navOffAction } from "../store/actions/navActions";
+import { AppState, useTypedSelector } from "../store/reducers/rootReducer";
 
 import "../styles/global.css";
 
@@ -27,9 +27,11 @@ const AppChild = ({ Component, pageProps }: AppProps) => {
         },
     ];
 
-    const { NavOn } = useSelector((state: AppState) => state.nav);
+    const { NavOn } = useTypedSelector((state: AppState) => state.nav);
 
-    const { ModOn, modComponent } = useSelector((state: AppState) => state.mod);
+    const { ModOn, modComponent } = useTypedSelector(
+        (state: AppState) => state.mod
+    );
 
     useEffect(() => {
         if (NavOn) {
