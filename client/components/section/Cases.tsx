@@ -29,7 +29,7 @@ const CasesAll = () => {
             usedskl: <Skill4 />,
         },
         {
-            name: "PROFESSIONAL PHOTGRAPHER WEBSITE",
+            name: "PROFESSIONAL PHOTOGRAPHER WEBSITE",
             id: 2,
             update: "01/07/2021",
             client: "Andrea Mangiacavallo",
