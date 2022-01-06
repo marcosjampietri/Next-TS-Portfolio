@@ -37,7 +37,8 @@ const CasesAll = () => {
             catg: "Software Development, DevOps",
             desc: "this case was very nice",
             tech: "Next.js, Typescript, Redux, Stripe, JWT, Mongo",
-            path: "https://mg-shop.vercel.app",
+
+            path: "https://mg-shop-marcosjampietri.vercel.app",
             usedskl: <Skill1 />,
         },
         {
