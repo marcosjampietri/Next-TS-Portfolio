@@ -69,7 +69,7 @@ const Menu = () => {
         {
             name: "RESUME",
             color: "hsla(263, 12%, 5%, 0.8)",
-            path: "https://drive.google.com/file/d/1-qoZn9OoQ0J8_Xd3C7otJBa7-4CeoW1K/preview",
+            path: "https://drive.google.com/file/d/18f67RSgf7y2Rv_JoYuWwyCMauJO40tnu/view?usp=sharing",
             target: "_blank",
         },
     ];
