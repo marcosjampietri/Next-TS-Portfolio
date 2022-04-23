@@ -14,6 +14,7 @@ const Blur = () => {
 
     const blur = useSpring<springProps>({
         opacity: NavOn || ModOn ? "1" : "0",
+        //display written as 'diplay'
         diplay: NavOn || ModOn ? "block" : "none",
         pointerEvents: NavOn || ModOn ? "all" : "none",
     });

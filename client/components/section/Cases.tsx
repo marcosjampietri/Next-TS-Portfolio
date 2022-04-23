@@ -25,7 +25,7 @@ const CasesAll = () => {
             catg: "Software Development, DevOps",
             desc: "this case was very nice",
             tech: "Next.js, Typescript, Redux, AWS",
-            path: "http://35.178.244.70:5150/",
+            path: "https://edu-me.vercel.app",
             usedskl: <Skill4 />,
         },
         {
