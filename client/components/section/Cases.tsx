@@ -17,8 +17,20 @@ const CasesAll = () => {
 
     const cases = [
         {
-            name: "SUPER SECRET CODE GAME",
+            name: "E-COMMERCE",
             id: 0,
+            update: "24/12/2021",
+            client: "Classified",
+            image: "/Pics/e-shop.jpg",
+            catg: "Software Development, DevOps",
+            desc: "this case was very nice",
+            tech: "Next.js, Typescript, Redux, Stripe, JWT, Mongo",
+            path: "https://new-shop-tau.vercel.app",
+            usedskl: <Skill1 />,
+        },
+        {
+            name: "SUPER SECRET CODE GAME",
+            id: 1,
             update: "27/09/2021",
             client: "EduMe",
             image: "/Pics/SSC-Game.jpg",
@@ -29,20 +41,7 @@ const CasesAll = () => {
             usedskl: <Skill4 />,
         },
         {
-            name: "E-COMMERCE",
-            id: 1,
-            update: "24/12/2021",
-            client: "Classified",
-            image: "/Pics/e-shop.jpg",
-            catg: "Software Development, DevOps",
-            desc: "this case was very nice",
-            tech: "Next.js, Typescript, Redux, Stripe, JWT, Mongo",
-
-            path: "https://mg-shop-marcosjampietri.vercel.app",
-            usedskl: <Skill1 />,
-        },
-        {
-            name: "PROFESSIONAL PHOTOGRAPHER WEBSITE",
+            name: "PROFESSIONAL PORTFOLIO",
             id: 2,
             update: "01/07/2021",
             client: "Andrea Mangiacavallo",
